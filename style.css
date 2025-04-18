@@ -546,7 +546,7 @@ section.portifolio .flex{
 
 .portifolio span{
     color: #58DB00;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .portifolio a{
@@ -639,7 +639,7 @@ section.portifolio .flex{
     justify-content: center;
     margin-top: 40px;
     width: 360px;
-    height: 810px;
+    height: 600px;
     background-size: cover;
     background-position: 100% 0%;
     cursor: pointer;
