@@ -405,6 +405,7 @@ section.especialidades .flex{
 }
 
 .especialidades .especialidades-box{
+    width: 388px;
     color: white;
     padding: 40px;
     border-radius: 20px;
@@ -420,6 +421,11 @@ section.especialidades .flex{
 .especialidades .especialidades-box i{
     font-size: 78px;
     color: #58DB00;
+}
+
+.especialidades .especialidades-box img{
+    width: 108px;
+    height: 108px;
 }
 
 .especialidades .especialidades-box h3{
@@ -818,6 +824,10 @@ footer .line-footer p a{
         margin-top: 30px;
         padding: 40px 8%;
         box-shadow: 0 0 40px 10px #58db0044;
+    }
+
+    .especialidades .especialidades-box{
+        width: auto;
     }
 
     /* SOBRE */
