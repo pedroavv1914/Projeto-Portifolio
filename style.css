@@ -564,6 +564,11 @@ section.portifolio .flex{
     text-decoration: none; /* mantém sem sublinhado */
 }
 
+.portifolio .a-2{
+    display: inline-flex;
+    width: 286px;
+}
+
 .button {
     gap: 10px;
     margin-top: 20px;
@@ -589,8 +594,6 @@ section.portifolio .flex{
     font-size: 15px;
 }
 
-
-  
 .icon {
     width: 24px;
     height: 24px;
