@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
@@ -28,13 +31,14 @@
     <!-- FIM BOOTSTRAP ICONS -->
 
     <link rel="icon" href="images/code.png" type="image/x-icon">
-     
+
     <link rel="stylesheet" href="style.css">
 
     <script src="menu.js" defer></script>
 
     <title>Portifólio Pedro</title>
 </head>
+
 <body>
 
     <button class="btnTopo" id="btnTopo" onclick="voltarAoTopo()">
@@ -51,7 +55,7 @@
                     <span>Software Developer</span>
                 </a>
             </div><!--logo-->
-            
+
             <nav class="menu-desktop">
                 <ul>
                     <li><a href="#inicio">INICIO</a></li>
@@ -70,7 +74,7 @@
             </div>
 
             <div class="menu-mobile" id="menu-mobile">
-                
+
                 <div class="btn-fechar">
                     <i class="bi bi-x-lg"></i>
                 </div><!--btn-fechar-->
@@ -106,7 +110,7 @@
                             <div class="hands"></div>
                             <div class="body"></div>
                             <div class="head">
-                              <div class="eye"></div>
+                                <div class="eye"></div>
                             </div>
                         </div>
 
@@ -137,12 +141,18 @@
 
                     <div class="txt-sobre">
                         <h2>MUITO PRAZER, <span>SOU PEDRO RIBEIRO.</span></h2>
-                        
-                        <p>Sou um programador full stack e apaixonado por computação desde sempre. Desde cedo, a tecnologia despertou minha curiosidade, e hoje estou me dedicando a transformar essa paixão em carreira.</p>
 
-                        <p>Tenho estudado desenvolvimento web e de software, tanto no front-end quanto no back-end, sempre buscando aprender e evoluir como profissional. Meu objetivo é criar soluções completas, funcionais e com foco na experiência do usuário.</p>
+                        <p>Sou um programador full stack e apaixonado por computação desde sempre. Desde cedo, a
+                            tecnologia despertou minha curiosidade, e hoje estou me dedicando a transformar essa paixão
+                            em carreira.</p>
 
-                        <p>Este portfólio é um reflexo da minha jornada de aprendizado. Aqui você vai encontrar projetos que estou desenvolvendo, experimentos com diferentes tecnologias e minha evolução como desenvolvedor.</p>
+                        <p>Tenho estudado desenvolvimento web e de software, tanto no front-end quanto no back-end,
+                            sempre buscando aprender e evoluir como profissional. Meu objetivo é criar soluções
+                            completas, funcionais e com foco na experiência do usuário.</p>
+
+                        <p>Este portfólio é um reflexo da minha jornada de aprendizado. Aqui você vai encontrar projetos
+                            que estou desenvolvendo, experimentos com diferentes tecnologias e minha evolução como
+                            desenvolvedor.</p>
 
                         <p style="color: #58DB00; font-weight: 600; font-size: 30px;">SEJA BEM VINDO!</p>
 
@@ -164,175 +174,139 @@
                     </div><!--txt-sobre-->
 
                 </div><!--flex-->
-                
+
             </div><!--interface-->
         </section><!--sobre-->
 
         <section class="especialidades" id="especialidades">
             <div class="interface">
                 <h2 class="titulo">MINHAS <span>ESPECIALIDADES.</span></h2>
-                <div class="flex">
-                    <div class="especialidades-box">
-                        <i class="bi bi-filetype-js"></i>
-                        <h3>JAVA SCRIPT</h3>
-                        <p>JavaScript é uma linguagem de programação voltada para a criação de interatividade em sites. Com ele, é possível manipular elementos da página, responder a ações do usuário e criar experiências dinâmicas no navegador.</p>
-                    </div><!--especialidades-box-->
-
-                    <div class="especialidades-box">
-                        <img src="images/nodejs.png">
-                        <h3>NODE. JS</h3>
-                        <p>Node.js é uma plataforma que permite executar JavaScript no lado do servidor. Com ela, é possível criar APIs, servidores web e aplicações completas usando uma única linguagem em todo o projeto</p>
-                    </div><!--especialidades-box-->
-
-                    <div class="especialidades-box">
-                        <img src="images/python.png" alt="">
-                        <h3>PYTHON</h3>
-                        <p>Python é uma linguagem de programação interpretada, de tipagem dinâmica e sintaxe enxuta, criada por Guido van Rossum em 1991. Com amplo ecossistema (Django, Flask, NumPy, TensorFlow) e suporte multiplataforma, é ideal para web, ciência de dados, automação e IA.</p>
-                    </div><!--especialidades-box-->
-
-                </div><!--flex-->
-            </div><!--interface-->
+                <div class="habilidades-cards-grid">
+                    <!-- Habilidade 1 -->
+                    <div class="habilidade-card">
+                        <div class="habilidade-icone"><i class="bi bi-filetype-js"></i></div>
+                        <h3>JavaScript</h3>
+                        <p>Criação de interatividade, manipulação de elementos e experiências dinâmicas no navegador.
+                        </p>
+                        <ul class="habilidade-tags">
+                            <li>ES6+</li>
+                            <li>DOM</li>
+                            <li>APIs</li>
+                        </ul>
+                    </div>
+                    <!-- Habilidade 2 -->
+                    <div class="habilidade-card">
+                        <div class="habilidade-icone"><img src="images/nodejs.png" alt="Node.js"></div>
+                        <h3>Node.js</h3>
+                        <p>Execução de JavaScript no servidor, criação de APIs, servidores web e aplicações completas.
+                        </p>
+                        <ul class="habilidade-tags">
+                            <li>Express</li>
+                            <li>API REST</li>
+                            <li>Prisma</li>
+                        </ul>
+                    </div>
+                    <!-- Habilidade 3 -->
+                    <div class="habilidade-card">
+                        <div class="habilidade-icone"><img src="images/python.png" alt="Python"></div>
+                        <h3>Python</h3>
+                        <p>Linguagem versátil para web, ciência de dados, automação e IA, com amplo ecossistema.</p>
+                        <ul class="habilidade-tags">
+                            <li>Django</li>
+                            <li>Flask</li>
+                            <li>Automação</li>
+                        </ul>
+                    </div>
+                    <!-- Adicione mais habilidades duplicando o bloco acima -->
+                </div>
+            </div>
         </section><!--especialidades-->
 
         <section class="portifolio" id="portifolio">
             <div class="interface">
-
                 <h2 class="titulo">MEU <span>PORTIFÓLIO.</span></h2>
-
-                <div class="flex">
-
-                    <div class="projeto1">
-
-                        <div class="img-port1" style="background-image: url(images/projetoloja.png);">
-                            <div class="overlay1">VERDAZZO</div>
-                        </div><!--img-port1-->
-
-                        <div class="descricao">
-                            <h2>VERDAZZO Burger - Página de Cardápio Interativa.</h2>
-                            <p>Este projeto simula uma experiência real de pedido online e demonstra habilidades em front-end responsivo, interatividade com JavaScript, e design centrado no usuário.</p>
-
-                            <ul>
-                                <li><span>HTML5</span> + <span>Tailwind CSS</span> para estruturação moderna e responsiva.</li>
-                                <li><span>JavaScript puro</span> para interatividade e controle do carrinho.</li>
-                                <li>Notificações com <span>Toastify.js</span> e ícones com <span>Font Awesome</span>.</li>
-                                <li><span>Produtos com imagens</span>, preços e botões de <span>“Adicionar ao carrinho”</span>.</li>
-                                <li><span>Modal de carrinho</span> com total e campo para endereço.</li>  
+                <div class="projetos-cards-grid">
+                    <!-- Projeto 1 -->
+                    <div class="projeto-card">
+                        <div class="projeto-thumb" style="background-image: url('images/projetoloja.png');"></div>
+                        <div class="projeto-content">
+                            <h3>VERDAZZO Burger</h3>
+                            <p>Página de Cardápio Interativa. Simula uma experiência real de pedido online, com foco em
+                                UX e responsividade.</p>
+                            <ul class="projeto-tags">
+                                <li>HTML5</li>
+                                <li>Tailwind CSS</li>
+                                <li>JavaScript</li>
                             </ul>
-
-                            <a href="https://projeto-loja-ruby.vercel.app/" target="_blank">
-                                <button class="button">
-                                    Veja o projeto
-                                    <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
-                                      <path
-                                        clip-rule="evenodd"
-                                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-                                        fill-rule="evenodd"
-                                      ></path>
-                                    </svg>
-                                </button>
-                            </a>
-
-                            <a href="https://github.com/pedroavv1914/Projeto-Loja" target="_blank">
-                                <button class="button">
-                                    Veja no GITHUB
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                                      </svg>
-                                </button>
-                            </a>
-                        </div><!--descricao-->
-
-                    </div><!--projeto1-->
-
-                    <div class="projeto2">
-
-                        <div class="img-port2" style="background-image: url(images/cadastrodeusuarios.png);">
-                            <div class="overlay2">API CRUD</div>
-                        </div><!--img-port2-->
-
-                        <div class="descricao">
-                            <h2>Cadastro de Usuários – Aplicação CRUD com Backend em Node.js.</h2>
-                            <p>Este projeto simula um sistema completo de cadastro de usuários, com funcionalidades de criação, listagem, atualização e remoção de dados. A aplicação é responsiva, interativa e conecta-se a um banco de dados usando Prisma ORM..</p>
-
-                            <ul>
-                                <li><span>React</span> para estruturação moderna e responsiva.</li>
-                                <li><span>JavaScript</span> + <span>Node.js</span> para interação com a interface e consumo da API.</li>
-                                <li><span>Express.js</span> como framework backend leve e eficiente.</li>
-                                <li><span>Prisma ORM</span> para gerenciamento de banco de dados</li>
-                                <li><span>API REST</span> com rotas para <span>GET</span>, <span>POST</span>, <span>PUT</span> e <span>DELETE.</span></li>
-                                <li>Cadastro de usuários com <span>nome</span>, <span>idade</span> e <span>e-mail.</span></li>
-                                <li>Conexão com banco de dados via <span>Prisma Client</span>.</li>
-                              </ul>                              
-
-                            <a href="https://github.com/pedroavv1914/cadastro-usuarios" target="_blank" class="a-2">
-                                <button class="button">
-                                    Veja no GITHUB o FRONTEND
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                                      </svg>
-                                </button>
-                            </a>
-
-                            <a href="https://github.com/pedroavv1914/Projeto-API-Node.Js-e-BD" target="_blank" class="a-2">
-                                <button class="button">
-                                    Veja no GITHUB o BACKEND
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                                      </svg>
-                                </button>
-                            </a>
-                        </div><!--descricao-->
-
-                    </div><!--projeto2-->
-
-                    <div class="projeto3">
-
-                        <div class="img-port3" style="background-image: url(images/ghfinder.png);">
-                            <div class="overlay3">GITHUB FINDER</div>
-                        </div><!--img-port3-->
-
-                        <div class="descricao">
-                            <h2>GITHUB FINDER - Sistema para procurar perfis do GitHub.</h2>
-                            <p>Este projeto simula uma plataforma para buscar e visualizar perfis de usuários do GitHub de forma simples e eficiente. A aplicação é responsiva, moderna e utiliza uma API pública para buscar dados em tempo real.</p>
-
-                            <ul>
-                                <li><span>React 19</span> para estruturação moderna e responsiva</li>
-                                <li><span>TypeScript</span> para tipagem segura e manutenção facilitada</li>
-                                <li><span>Vite</span> para otimização do ambiente de desenvolvimento e build rápido.</li>
-                                <li><span>React Router Dom</span> para navegação entre páginas.</li>
-                                <li><span>React Icons</span> para enriquecimento visual da interface</li>
-                                <li><span>ESLint</span> para padronização e qualidade de código.</li>
-                                <li><span>API pública do GitHub</span> para consulta de perfis de usuários.</li>
-                              </ul> 
-
-                            <a href="https://github-finder-pearl-mu.vercel.app/" target="_blank">
-                                <button class="button">
-                                    Veja o projeto
-                                    <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
-                                      <path
-                                        clip-rule="evenodd"
-                                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-                                        fill-rule="evenodd"
-                                      ></path>
-                                    </svg>
-                                </button>
-                            </a>
-
-                            <a href="https://github.com/pedroavv1914/github_finder" target="_blank">
-                                <button class="button">
-                                    Veja no GITHUB
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                                      </svg>
-                                </button>
-                            </a>
-                        </div><!--descricao-->
-                        
-                    </div><!--projeto3-->
-
-                </div><!--flex-->
-
-            </div><!--interface-->
+                            <div class="projeto-links">
+                                <a href="https://projeto-loja-ruby.vercel.app/" target="_blank" class="btn-projeto">Ver
+                                    Projeto</a>
+                                <a href="https://github.com/pedroavv1914/Projeto-Loja" target="_blank"
+                                    class="btn-codigo">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Projeto 2 -->
+                    <div class="projeto-card">
+                        <div class="projeto-thumb" style="background-image: url('images/cadastrodeusuarios.png');">
+                        </div>
+                        <div class="projeto-content">
+                            <h3>API CRUD</h3>
+                            <p>Aplicação completa de cadastro de usuários, com backend em Node.js, frontend em React e
+                                banco de dados gerenciado por Prisma ORM.</p>
+                            <ul class="projeto-tags">
+                                <li>React</li>
+                                <li>Node.js</li>
+                                <li>Prisma</li>
+                            </ul>
+                            <div class="projeto-links">
+                                <a href="https://github.com/pedroavv1914/cadastro-usuarios" target="_blank"
+                                    class="btn-projeto">Ver Frontend</a>
+                                <a href="https://github.com/pedroavv1914/Projeto-API-Node.Js-e-BD" target="_blank"
+                                    class="btn-codigo">Backend</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Projeto 3 -->
+                    <div class="projeto-card">
+                        <div class="projeto-thumb" style="background-image: url('images/ghfinder.png');"></div>
+                        <div class="projeto-content">
+                            <h3>GitHub Finder</h3>
+                            <p>Busque e visualize perfis do GitHub de forma simples e eficiente. App moderno, responsivo
+                                e com consulta à API pública do GitHub.</p>
+                            <ul class="projeto-tags">
+                                <li>React</li>
+                                <li>TypeScript</li>
+                                <li>Vite</li>
+                            </ul>
+                            <div class="projeto-links">
+                                <a href="https://github-finder-pearl-mu.vercel.app/" target="_blank"
+                                    class="btn-projeto">Ver Projeto</a>
+                                <a href="https://github.com/pedroavv1914/github_finder" target="_blank"
+                                    class="btn-codigo">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Exemplo de Projeto Extra -->
+                    <div class="projeto-card">
+                        <div class="projeto-thumb" style="background-image: url('images/projetoextra.png');"></div>
+                        <div class="projeto-content">
+                            <h3>Projeto Extra</h3>
+                            <p>Descrição breve do projeto extra, destacando funcionalidades ou tecnologias principais.
+                            </p>
+                            <ul class="projeto-tags">
+                                <li>HTML</li>
+                                <li>CSS</li>
+                                <li>JS</li>
+                            </ul>
+                            <div class="projeto-links">
+                                <a href="#" target="_blank" class="btn-projeto">Ver Projeto</a>
+                                <a href="#" target="_blank" class="btn-codigo">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section><!--portifolio-->
 
         <section class="formulario" id="formulario">
@@ -362,19 +336,19 @@
                 <div class="flex">
 
                     <div class="logo-footer">
-                            <h1>PEDRO RIBEIRO</h1>
-                            <span>Software Developer</span>
+                        <h1>PEDRO RIBEIRO</h1>
+                        <span>Software Developer</span>
                     </div><!--logo-footer-->
-    
+
                     <div class="btn-social">
                         <a href="https://www.linkedin.com/in/pedro-ribeiro-a71300230/" target="_blank">
                             <button><i class="bi bi-linkedin"></i></button>
                         </a>
-    
+
                         <a href="https://github.com/pedroavv1914" target="_blank">
                             <button><i class="bi bi-github"></i></button>
                         </a>
-    
+
                         <a href="https://www.instagram.com/_pedroavv/" target="_blank">
                             <button><i class="bi bi-instagram"></i></button>
                         </a>
@@ -384,11 +358,13 @@
             </div><!--line-footer-->
 
             <div class="line-footer borda">
-                <p><i class="bi bi-envelope-fill"></i><a href="mailto:pedroribeiro1136@gmail.com">pedroribeiro1136@gmail.com</a></p>
+                <p><i class="bi bi-envelope-fill"></i><a
+                        href="mailto:pedroribeiro1136@gmail.com">pedroribeiro1136@gmail.com</a></p>
             </div><!--line-footer-->
 
         </div><!--interface-->
     </footer>
 
 </body>
+
 </html>
