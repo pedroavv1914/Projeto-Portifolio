@@ -14,7 +14,36 @@ html {
 body{
     background-color: #02070D;
     height: 100vh;
+    position: relative;
+    overflow-x: hidden;
 }
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: -100vw;
+    width: 200vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    background: linear-gradient(120deg,
+        transparent 0%,
+        transparent 10%,
+        rgba(88,219,0,0.10) 25%,
+        rgba(88,219,0,0.17) 50%,
+        rgba(88,219,0,0.10) 75%,
+        transparent 90%,
+        transparent 100%
+    );
+    opacity: 0;
+    animation: efeitoVerdePassando 20s linear infinite;
+}
+@keyframes efeitoVerdePassando {
+    0%   { left: -100vw; opacity: 0; }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.7; }
+    100% { left: 100vw; opacity: 0; }
+}
+
 
 .btnTopo {
     position: fixed;
@@ -327,33 +356,37 @@ header .menu-desktop ul li{
     text-decoration: none;
     font-weight: 600;
     font-size: 20px;
+    background: transparent;
+    overflow: hidden;
     transition: 0.3s;
 }
-  
-.btn2::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    width: calc(100% + 4px);
-    height: calc(100% - -2px);
-    background-color: #02070D;
-    transition: 0.3s ease-out;
-    transform: scaleY(1);
+.btn2:hover {
+    background: transparent;
+    border: 2px solid #58DB00;
 }
-  
 .btn2::after {
     content: "";
     position: absolute;
-    top: -2px;
-    left: -2px;
-    width: calc(100% + 4px);
-    height: calc(100% - 50px);
-    background-color: #02070D;
-    transition: 0.3s ease-out;
-    transform: scaleY(1);
+    left: -60%;
+    top: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, #58DB00 60%, transparent 100%);
+    opacity: 0.7;
+    transform: skewX(-20deg);
+    transition: none;
 }
-  
+.btn2:hover::after {
+    animation: btn2-shine 0.7s linear;
+}
+@keyframes btn2-shine {
+    0% {
+        left: -60%;
+    }
+    100% {
+        left: 120%;
+    }
+}
 .btn2:hover::before {
     transform: translateY(-25px);
     height: 0;
@@ -944,24 +977,30 @@ form textarea{
     height: 200px;
 }
 
-form .btn-enviar{
+.btn-enviar {
     margin-top: 20px;
     text-align: center;
 }
 
-form .btn-enviar input{
+.btn-enviar input {
     width: 160px;
     background-color: #58DB00;
     color: black;
     font-weight: 700;
     cursor: pointer;
     transition: .3s;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 0;
+    font-size: 18px;
+    letter-spacing: 1px;
 }
 
-form .btn-enviar input:hover{
+.btn-enviar input:hover {
     box-shadow: 0px 0px 8px #58DB00;
     transform: scale(1.05);
 }
+
 
 /* ESTILOS DO RODAPÉ */
 
