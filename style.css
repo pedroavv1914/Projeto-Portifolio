@@ -1,3 +1,20 @@
+/* SEPARADOR ENTRE SECTIONS */
+.section-separator {
+  width: 100%;
+  height: 5px;
+  margin: 60px 0 40px 0;
+  background: linear-gradient(90deg, transparent 0%, #58DB00 50%, transparent 100%);
+  box-shadow: 0 0 18px 4px #58DB0077, 0 0 36px 8px #58DB0033;
+  border-radius: 8px;
+  opacity: 0.85;
+  animation: neon-separator-glow 2.5s linear infinite alternate;
+}
+
+@keyframes neon-separator-glow {
+  0% { box-shadow: 0 0 18px 4px #58DB0077, 0 0 36px 8px #58DB0033; }
+  100% { box-shadow: 0 0 28px 8px #58DB00bb, 0 0 56px 16px #58DB0055; }
+}
+
 /* ESTILO GERAL*/
 *{
     margin: 0;
@@ -746,7 +763,7 @@ section.sobre .flex{
 
 section.portifolio{
     padding: 80px 4%;
-    box-shadow: 0 0 40px 10px #58db0044;
+    /* box-shadow removido: separador antigo substituído pelo .section-separator */
 }
 
 section.portifolio .flex{
@@ -1006,7 +1023,6 @@ form textarea{
 
 footer{
     padding: 40px 4%;
-    box-shadow: 0 0 40px 10px #58db0044;
 }
 
 footer .flex{
@@ -1030,9 +1046,7 @@ footer .line-footer{
     padding: 20px 0;
 }
 
-.borda {
-    border-top: 2px solid #58DB00;
-}
+/* .borda removida: separador antigo substituído pelo .section-separator */
 
 footer .line-footer p i{
     color: #58DB00;
@@ -1042,6 +1056,12 @@ footer .line-footer p i{
 footer .line-footer p a{
     margin-left: 8px;
     color: white;
+}
+
+@media (max-width: 900px) {
+  .btn-enviar-header {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1301px){
@@ -1140,7 +1160,7 @@ footer .line-footer p a{
     }
 
     .projeto1, .projeto2{
-        border-bottom: 3px solid #58db00;
+        /* border-bottom removido: separador antigo substituído pelo .section-separator */
         padding-bottom: 50px;
     }
 
