@@ -32,3 +32,16 @@ function voltarAoTopo() {
     behavior: "smooth"
   });
 }
+
+function revealOnScroll() {
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.88 && rect.bottom > 0) {
+      el.classList.add('active');
+    } else {
+      el.classList.remove('active');
+    }
+  });
+}
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
