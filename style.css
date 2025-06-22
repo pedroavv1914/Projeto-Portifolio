@@ -757,7 +757,7 @@ section.topo-do-site .flex {
 }
 
 .sobre-card-modern {
-    background: rgba(16, 24, 31, 0.82);
+    background: black;
     border: 2.5px solid #58DB00cc;
     box-shadow: 0 0 36px 0 #58DB0044, 0 2px 32px 0 #000a;
     border-radius: 32px;
