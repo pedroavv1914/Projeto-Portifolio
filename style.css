@@ -183,7 +183,7 @@
 .info-item {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 5px;
     background: rgba(255, 255, 255, 0.03);
     padding: 15px;
     border-radius: 12px;
@@ -206,12 +206,12 @@
 
 .info-item h4 {
     color: #fff;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin-bottom: 2px;
 }
 
 .info-item span {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #aaa;
     display: block;
 }
