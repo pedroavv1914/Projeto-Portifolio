@@ -45,3 +45,35 @@ function revealOnScroll() {
 }
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
+
+// ====== FILTRO DA SEÇÃO DE HABILIDADES ======
+function setupHabilidadesFiltro() {
+  const filtroContainer = document.querySelector('.habilidades-filtros');
+  if (!filtroContainer) return; // seção pode não estar na página
+
+  const botoes = Array.from(filtroContainer.querySelectorAll('.filtro-btn'));
+  const cards = Array.from(document.querySelectorAll('.habilidade-card'));
+
+  function aplicarFiltro(valor) {
+    cards.forEach(card => {
+      const categoria = card.getAttribute('data-category');
+      const mostrar = valor === 'all' || categoria === valor;
+      card.classList.toggle('is-hidden', !mostrar);
+    });
+  }
+
+  botoes.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const ativo = filtroContainer.querySelector('.filtro-btn.active');
+      if (ativo && ativo !== btn) ativo.classList.remove('active');
+      btn.classList.add('active');
+      const filtro = btn.getAttribute('data-filter') || 'all';
+      aplicarFiltro(filtro);
+    });
+  });
+
+  // Estado inicial: "Todas"
+  aplicarFiltro('all');
+}
+
+window.addEventListener('load', setupHabilidadesFiltro);
