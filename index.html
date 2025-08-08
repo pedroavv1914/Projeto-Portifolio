@@ -210,12 +210,25 @@
         <section class="especialidades reveal" id="especialidades">
             <div class="interface">
                 <h2 class="titulo">MINHAS <span>ESPECIALIDADES.</span></h2>
+                <div class="habilidades-filtros" role="tablist" aria-label="Filtros de habilidades">
+                    <button class="filtro-btn active" data-filter="all" role="tab" aria-selected="true">Todas</button>
+                    <button class="filtro-btn" data-filter="front-end" role="tab" aria-selected="false">Front-end</button>
+                    <button class="filtro-btn" data-filter="back-end" role="tab" aria-selected="false">Back-end</button>
+                    <button class="filtro-btn" data-filter="database" role="tab" aria-selected="false">Banco de Dados</button>
+                    <button class="filtro-btn" data-filter="devops" role="tab" aria-selected="false">DevOps</button>
+                    <button class="filtro-btn" data-filter="tools" role="tab" aria-selected="false">Ferramentas</button>
+                </div>
                 <div class="habilidades-cards-grid">
 
                     <!-- Habilidade 1 -->
-                    <div class="habilidade-card">
+                    <div class="habilidade-card" data-category="front-end">
                         <div class="habilidade-icone"><i class="bi bi-filetype-js"></i></div>
                         <h3>JavaScript</h3>
+                        <div class="habilidade-proficiencia" aria-label="Proficiência: Forte">
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot active"></span>
+                        </div>
                         <p>Criação de interatividade, manipulação de elementos e experiências dinâmicas no navegador.
                         </p>
                         <ul class="habilidade-tags">
@@ -225,9 +238,14 @@
                         </ul>
                     </div>
                     <!-- Habilidade 2 -->
-                    <div class="habilidade-card">
+                    <div class="habilidade-card" data-category="back-end">
                         <div class="habilidade-icone"><img src="images/nodejs.png" alt="Node.js"></div>
                         <h3>Node.js</h3>
+                        <div class="habilidade-proficiencia" aria-label="Proficiência: Forte">
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot active"></span>
+                        </div>
                         <p>Execução de JavaScript no servidor, criação de APIs, servidores web e aplicações completas.
                         </p>
                         <ul class="habilidade-tags">
@@ -237,9 +255,14 @@
                         </ul>
                     </div>
                     <!-- Habilidade 3 -->
-                    <div class="habilidade-card">
+                    <div class="habilidade-card" data-category="back-end">
                         <div class="habilidade-icone"><i class="bi bi-filetype-py"></i><!--<img src="images/python.png" alt="Python">--></div>
                         <h3>Python</h3>
+                        <div class="habilidade-proficiencia" aria-label="Proficiência: Boa">
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot"></span>
+                        </div>
                         <p>Linguagem versátil para web, ciência de dados, automação e IA, com amplo ecossistema.</p>
                         <ul class="habilidade-tags">
                             <li>Django</li>
@@ -248,9 +271,14 @@
                         </ul>
                     </div>
                     <!-- Habilidade 4 -->
-                    <div class="habilidade-card">
+                    <div class="habilidade-card" data-category="front-end">
                         <div class="habilidade-icone"><i class="bi bi-filetype-jsx"></i></div>
                         <h3>React</h3>
+                        <div class="habilidade-proficiencia" aria-label="Proficiência: Boa">
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot"></span>
+                        </div>
                         <p>Desenvolvimento de interfaces modernas e reativas para aplicações web.</p>
                         <ul class="habilidade-tags">
                             <li>Hooks</li>
@@ -259,9 +287,14 @@
                         </ul>
                     </div>
                     <!-- Habilidade 5 -->
-                    <div class="habilidade-card">
+                    <div class="habilidade-card" data-category="database">
                         <div class="habilidade-icone"><i class="bi bi-database"></i></div>
                         <h3>SQL</h3>
+                        <div class="habilidade-proficiencia" aria-label="Proficiência: Boa">
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot"></span>
+                        </div>
                         <p>Modelagem, consultas e manipulação de dados em bancos relacionais.</p>
                         <ul class="habilidade-tags">
                             <li>MySQL</li>
@@ -270,9 +303,14 @@
                         </ul>
                     </div>
                     <!-- Habilidade 6 -->
-                    <div class="habilidade-card">
+                    <div class="habilidade-card" data-category="tools">
                         <div class="habilidade-icone"><i class="bi bi-git"></i></div>
                         <h3>Git & GitHub</h3>
+                        <div class="habilidade-proficiencia" aria-label="Proficiência: Forte">
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot active"></span>
+                        </div>
                         <p>Controle de versão, colaboração e deploy de projetos.</p>
                         <ul class="habilidade-tags">
                             <li>Branching</li>
@@ -281,9 +319,14 @@
                         </ul>
                     </div>
                     <!-- Habilidade 7 -->
-                    <div class="habilidade-card">
+                    <div class="habilidade-card" data-category="devops">
                         <div class="habilidade-icone"><i class="bi bi-box"></i></div>
                         <h3>Docker</h3>
+                        <div class="habilidade-proficiencia" aria-label="Proficiência: Boa">
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot"></span>
+                        </div>
                         <p>Containerização de aplicações para ambientes de desenvolvimento e produção.</p>
                         <ul class="habilidade-tags">
                             <li>Docker Compose</li>
@@ -292,9 +335,14 @@
                         </ul>
                     </div>
                     <!-- Habilidade 8 -->
-                    <div class="habilidade-card">
+                    <div class="habilidade-card" data-category="front-end">
                         <div class="habilidade-icone"><i class="bi bi-filetype-tsx"></i></div>
                         <h3>TypeScript</h3>
+                        <div class="habilidade-proficiencia" aria-label="Proficiência: Boa">
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot active"></span>
+                            <span class="proficiencia-dot"></span>
+                        </div>
                         <p>Superset do JavaScript com tipagem estática, trazendo mais segurança e produtividade no desenvolvimento web moderno.</p>
                         <ul class="habilidade-tags">
                             <li>Type Safety</li>
