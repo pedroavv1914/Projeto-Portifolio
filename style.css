@@ -1005,6 +1005,42 @@ h2.titulo span {
 }
 
 /* ESTILO DOS CARDS DE HABILIDADES */
+.habilidades-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 8px 0;
+}
+
+.filtro-btn {
+    background: #0c1118;
+    color: #e6ffe6;
+    border: 1px solid #2a3a2a;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.95rem;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.1s ease;
+}
+
+.filtro-btn:hover {
+    background: #12201a;
+    border-color: #58DB00;
+}
+
+.filtro-btn:active {
+    transform: scale(0.98);
+}
+
+.filtro-btn.active {
+    background: #0f2815;
+    color: #58DB00;
+    border-color: #58DB00;
+}
+
 .habilidades-cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -1061,6 +1097,30 @@ h2.titulo span {
     text-align: center;
 }
 
+.habilidade-proficiencia {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.proficiencia-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    box-shadow: none;
+    transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.proficiencia-dot.active {
+    background: #58DB00;
+    border-color: #58DB00;
+    box-shadow: 0 0 8px #58DB00aa;
+}
+
 .habilidade-tags {
     list-style: none;
     display: flex;
@@ -1079,6 +1139,10 @@ h2.titulo span {
     font-size: 0.93rem;
 }
 
+.habilidade-card.is-hidden {
+    display: none !important;
+}
+
 @media (max-width: 700px) {
     .habilidade-card {
         padding: 22px 6px 14px 6px;
@@ -1091,6 +1155,16 @@ h2.titulo span {
     .habilidade-icone img {
         width: 30px;
         height: 30px;
+    }
+
+    .habilidades-filtros {
+        gap: 8px;
+        padding: 0 8px;
+    }
+
+    .filtro-btn {
+        padding: 7px 12px;
+        font-size: 0.9rem;
     }
 }
 
