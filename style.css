@@ -1,3 +1,25 @@
+.habilidade-icone i {
+    font-size: 1.8rem;
+    line-height: 1;
+    display: inline-block;
+    color: var(--neon);
+}
+
+.habilidade-icone img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    display: block;
+    filter: contrast(1.05) brightness(1);
+}
+
+.habilidade-card h3,
+.habilidade-card p,
+.habilidade-card .habilidade-proficiencia,
+.habilidade-card .habilidade-tags {
+    position: relative;
+    z-index: 1;
+}
 /* ===== SEÇÃO HERO ===== */
 .hero {
     min-height: 100vh;
@@ -614,7 +636,9 @@
     -webkit-mask: 
         linear-gradient(#fff 0 0) content-box, 
         linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
     mask-composite: exclude;
     pointer-events: none;
     z-index: 3;
@@ -1043,67 +1067,144 @@ h2.titulo span {
 
 .habilidades-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap: 32px;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    align-items: start;
     margin: 40px 0;
+    --neon: #58DB00;
 }
 
 .habilidade-card {
-    background: #000;
-    border-radius: 18px;
+    position: relative;
+    background: linear-gradient(180deg, #050505, #0a0a0a);
+    border-radius: 14px;
     overflow: hidden;
-    border: 2px solid transparent;
-    box-shadow: none;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 36px 18px 24px 18px;
-    transition: transform 0.35s cubic-bezier(.4, 0, .2, 1), border-color 0.35s cubic-bezier(.4, 0, .2, 1), box-shadow 0.35s cubic-bezier(.4, 0, .2, 1);
+    align-items: stretch;
+    padding: 52px 16px 20px 16px; /* espaço para barra do terminal */
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(.4, 0, .2, 1), box-shadow 0.35s cubic-bezier(.4, 0, .2, 1), filter 0.35s cubic-bezier(.4, 0, .2, 1);
+    border: 1px solid rgba(88, 219, 0, 0.18);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(88,219,0,0.08);
 }
 
 .habilidade-card:hover {
-    border-color: #58DB00;
-    box-shadow: 0 0 12px #58DB00, 0 0 24px #58DB00aa;
-    transform: translateY(-4px) scale(1.015);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.45), 0 0 0 1px rgba(88,219,0,0.25), inset 0 0 0 1px rgba(88,219,0,0.12);
+}
+
+/* Barra de título do terminal com "semáforos" */
+.habilidade-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 36px;
+    background: linear-gradient(180deg, #0d0d0d, #0a0a0a);
+    border-bottom: 1px solid rgba(88,219,0,0.2);
+    box-shadow: inset 0 -1px 0 rgba(88,219,0,0.12);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.habilidade-card::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    width: 54px;
+    height: 14px;
+    background:
+      radial-gradient(circle 6px at 7px 7px, #ff5f56 95%, transparent 96%),
+      radial-gradient(circle 6px at 27px 7px, #ffbd2e 95%, transparent 96%),
+      radial-gradient(circle 6px at 47px 7px, #27c93f 95%, transparent 96%);
+    z-index: 0;
+    pointer-events: none;
 }
 
 .habilidade-icone {
-    font-size: 3.3rem;
-    color: #58DB00;
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    font-size: 1.8rem;
+    margin: 0 auto 10px auto;
+    color: var(--neon);
+    position: relative;
+    z-index: 1;
 }
 
-.habilidade-icone img {
-    width: 44px;
-    height: 44px;
-    object-fit: contain;
-    margin-bottom: 0;
+.habilidade-icone::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    display: none; /* desativa halo anterior */
 }
+
+
+/* Proficiency ring (holographic) driven by --ring-angle */
+.habilidade-icone::after { display: none; }
 
 .habilidade-card h3 {
-    color: #58DB00;
-    margin-bottom: 10px;
-    font-size: 1.18rem;
+    color: var(--neon);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
     text-align: center;
+    position: relative;
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+    letter-spacing: 0.3px;
+}
+
+.habilidade-card h3::after { content: none; }
+.habilidade-card h3::before {
+    content: "> ";
+    color: rgba(88,219,0,0.85);
+}
+
+.habilidade-card.expanded h3::after {
+    transform: rotate(180deg);
+    opacity: 1;
 }
 
 .habilidade-card p {
-    color: #e0e0e0;
-    font-size: 1rem;
-    margin-bottom: 13px;
-    text-align: center;
+    color: #cde7c2;
+    font-size: 0.95rem;
+    text-align: left;
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.2s ease;
+}
+
+.habilidade-card.expanded p {
+    max-height: 200px;
+    opacity: 1;
+    margin: 8px 0 12px 0;
 }
 
 .habilidade-proficiencia {
-    display: flex;
-    gap: 6px;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 12px;
+    position: relative;
+    height: 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(88,219,0,0.25);
+    background:
+      linear-gradient(90deg, transparent 0, transparent calc(33.333% - 1px), rgba(88,219,0,0.15) calc(33.333% - 1px), rgba(88,219,0,0.15) calc(33.333% + 1px), transparent calc(33.333% + 1px), transparent calc(66.666% - 1px), rgba(88,219,0,0.15) calc(66.666% - 1px), rgba(88,219,0,0.15) calc(66.666% + 1px), transparent calc(66.666% + 1px));
+    overflow: hidden;
+    margin: 6px 0 10px 0;
 }
+.habilidade-proficiencia::after {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: calc(var(--level, 0) * 33.333%);
+    background: linear-gradient(90deg, rgba(88,219,0,0.45), rgba(88,219,0,0.9));
+    box-shadow: 0 0 10px rgba(88,219,0,0.3);
+}
+.proficiencia-dot { display: none; }
 
 .proficiencia-dot {
     width: 8px;
