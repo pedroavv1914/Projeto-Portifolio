@@ -77,3 +77,102 @@ function setupHabilidadesFiltro() {
 }
 
 window.addEventListener('load', setupHabilidadesFiltro);
+
+// ====== EXPANSÃO/CONTRAÇÃO DOS CARDS DE HABILIDADES ======
+function setupHabilidadesExpand() {
+  const cards = Array.from(document.querySelectorAll('.habilidade-card'));
+  if (!cards.length) return;
+
+  // Inicializa atributos de acessibilidade
+  cards.forEach(card => {
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-expanded', 'false');
+  });
+
+  function toggleCard(card) {
+    const isCurrentlyExpanded = card.classList.contains('expanded');
+
+    // Se o card não está expandido, iremos expandi-lo e fechar os demais
+    if (!isCurrentlyExpanded) {
+      // Fecha quaisquer outros cards abertos
+      const allCards = document.querySelectorAll('.habilidade-card.expanded');
+      allCards.forEach(c => {
+        if (c !== card) {
+          c.classList.remove('expanded');
+          c.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Expande o card atual
+      card.classList.add('expanded');
+      card.setAttribute('aria-expanded', 'true');
+
+      // Efeito de digitação ao expandir (uma vez)
+      const p = card.querySelector('p');
+      if (p && !p.dataset.typed) {
+        typeDescription(p);
+      }
+    } else {
+      // Se já está expandido, recolhe (permitindo zero abertos)
+      card.classList.remove('expanded');
+      card.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  function onCardActivate(e) {
+    // Evita ativar quando clicar em botões de filtro por engano
+    const card = e.currentTarget;
+    toggleCard(card);
+  }
+
+  function onCardKey(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleCard(e.currentTarget);
+    }
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('click', onCardActivate);
+    card.addEventListener('keydown', onCardKey);
+  });
+}
+
+window.addEventListener('load', setupHabilidadesExpand);
+
+// ====== PROFICIÊNCIA: CONFIGURAR BARRA DE NÍVEL ======
+function setupProficienciaRing() {
+  const cards = document.querySelectorAll('.habilidade-card');
+  cards.forEach(card => {
+    const dots = card.querySelectorAll('.proficiencia-dot.active');
+    const count = dots.length; // 0..3
+    // Ajusta barra de nível: 0..3
+    const nivel = Math.min(3, Math.max(0, count));
+    const barra = card.querySelector('.habilidade-proficiencia');
+    if (barra) barra.style.setProperty('--level', String(nivel));
+  });
+}
+
+window.addEventListener('load', setupProficienciaRing);
+
+// ====== Helper: efeito de digitação no parágrafo ======
+function typeDescription(el) {
+  const full = el.textContent.trim();
+  el.dataset.typed = 'true';
+  el.dataset.fullText = full;
+  el.textContent = '';
+  let i = 0;
+  const speed = 12; // ms por caractere
+  const step = () => {
+    // se o card for recolhido, continuamos preenchendo para não quebrar layout
+    if (i <= full.length) {
+      el.textContent = full.slice(0, i);
+      i += 2; // acelera um pouco
+      setTimeout(step, speed);
+    } else {
+      el.textContent = full;
+    }
+  };
+  step();
+}
