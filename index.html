@@ -31,29 +31,18 @@
 
 <body>
 
-    <div class="menu-mobile" id="menu-mobile">
-        <div class="btn-fechar">
-            <i class="bi bi-x-lg"></i>
-        </div><!--btn-fechar-->
-        <nav>
-            <ul>
-                <li><a href="#inicio">INICIO</a></li>
-                <li><a href="#sobre">SOBRE</a></li>
-                <li><a href="#especialidades">ESPECIALIDADES</a></li>
-                <li><a href="#portifolio">PROJETOS</a></li>
-                <li><a href="#formulario">CONTATO</a></li>
-            </ul>
-        </nav>
-    </div><!--menu-mobile-->
+    <!-- Subtle animated blobs background (global) -->
+    <div class="bg-blobs" aria-hidden="true"></div>
 
-    <div class="overlay-menu" id="overlay-menu"></div>
+    
 
     <button class="btnTopo" id="btnTopo" onclick="voltarAoTopo()">
         <i class="bi bi-arrow-up-circle-fill"></i>
     </button>
 
 
-    <header class="reveal">
+    <header class="nav-magic reveal">
+        <div class="nav-progress" aria-hidden="true"></div>
 
         <div class="interface">
             <div class="logo">
@@ -103,6 +92,8 @@
         </div><!--interface-->
 
     </header>
+
+    
 
     <main class="reveal">
         <section class="hero reveal" id="inicio">
