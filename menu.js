@@ -163,6 +163,7 @@
         // Inicializa CTAs
         updateCtas();
     })();
+
 // ====== MENU MOBILE (com null checks) ======
 const btnMenu = document.getElementById('btn-menu');
 const menu = document.getElementById('menu-mobile');
