@@ -1043,7 +1043,7 @@ h2.titulo span {
     color: #e6ffe6;
     border: 1px solid #2a3a2a;
     border-radius: 999px;
-    padding: 8px 14px;
+    padding: 8px 24px;
     font-size: 0.95rem;
     letter-spacing: 0.2px;
     cursor: pointer;
@@ -1067,10 +1067,10 @@ h2.titulo span {
 
 .habilidades-cards-grid {
     display: grid;
-    gap: 22px;
+    gap: 33px;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     align-items: start;
-    margin: 40px 0;
+    margin: 90px 0;
     --neon: #58DB00;
 }
 
