@@ -1,3 +1,168 @@
+    // ==============================
+    // Contato: Validação em tempo real e CTAs
+    // ==============================
+    (function setupContatoForm() {
+        const form = document.getElementById('contato-form');
+        if (!form) return; // safe guard
+
+        const nome = document.getElementById('nome');
+        const email = document.getElementById('email');
+        const telefone = document.getElementById('telefone');
+        const mensagem = document.getElementById('mensagem');
+        const statusBox = form.querySelector('.form-status');
+        const submitBtn = document.getElementById('btn-submit-contato');
+        const waCta = document.getElementById('cta-whatsapp');
+        const agendarCta = document.getElementById('cta-agendar');
+
+        const errNome = document.getElementById('erro-nome');
+        const errEmail = document.getElementById('erro-email');
+        const errTelefone = document.getElementById('erro-telefone');
+        const errMensagem = document.getElementById('erro-mensagem');
+
+        const setStatus = (msg, type = 'neutral') => {
+            if (!statusBox) return;
+            statusBox.textContent = msg || '';
+            statusBox.classList.remove('ok', 'error', 'loading');
+            if (type) statusBox.classList.add(type);
+        };
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+        function setInvalid(field, errEl, message) {
+            if (!field) return false;
+            field.classList.add('is-invalid');
+            field.classList.remove('is-valid');
+            field.setAttribute('aria-invalid', 'true');
+            if (errEl) errEl.textContent = message || '';
+            return false;
+        }
+
+        function setValid(field, errEl) {
+            if (!field) return true;
+            field.classList.remove('is-invalid');
+            field.classList.add('is-valid');
+            field.removeAttribute('aria-invalid');
+            if (errEl) errEl.textContent = '';
+            return true;
+        }
+
+        function validateNome() {
+            const value = (nome?.value || '').trim();
+            if (value.length < 2) return setInvalid(nome, errNome, 'Informe seu nome.');
+            return setValid(nome, errNome);
+        }
+
+        function validateEmail() {
+            const value = (email?.value || '').trim();
+            if (!emailRegex.test(value)) return setInvalid(email, errEmail, 'E-mail inválido.');
+            return setValid(email, errEmail);
+        }
+
+        function validateTelefone() {
+            // opcional: apenas limpa erro e remove inválido
+            const value = (telefone?.value || '').trim();
+            if (!value) return setValid(telefone, errTelefone);
+            // valida mínimo de dígitos quando preenchido
+            const digits = value.replace(/\D/g, '');
+            if (digits.length < 10) return setInvalid(telefone, errTelefone, 'Informe DDD + número.');
+            return setValid(telefone, errTelefone);
+        }
+
+        function validateMensagem() {
+            const value = (mensagem?.value || '').trim();
+            if (value.length < 6) return setInvalid(mensagem, errMensagem, 'Descreva sua mensagem.');
+            return setValid(mensagem, errMensagem);
+        }
+
+        function validateAll() {
+            const v1 = validateNome();
+            const v2 = validateEmail();
+            const v3 = validateTelefone();
+            const v4 = validateMensagem();
+            return v1 && v2 && v3 && v4;
+        }
+
+        // Atualiza links de WhatsApp conforme preenchimento
+        function buildWaHref(number, text) {
+            const base = 'https://wa.me/';
+            const digits = (number || '').replace(/\D/g, '');
+            const finalText = encodeURIComponent(text || 'Olá Pedro! Vim pelo portfólio.');
+            const target = digits || '5511974244619';
+            return `${base}${target}?text=${finalText}`;
+        }
+
+        function updateCtas() {
+            const nomeV = (nome?.value || '').trim();
+            const telV = (telefone?.value || '').trim();
+            const msgV = (mensagem?.value || '').trim();
+            const emailV = (email?.value || '').trim();
+            const texto = `Olá Pedro! Sou ${nomeV || 'um potencial cliente'}. Meu e-mail: ${emailV || '—'}. ${msgV || ''}`;
+            const href = buildWaHref(telV, texto);
+            if (waCta) waCta.href = href;
+            if (agendarCta) agendarCta.href = buildWaHref(telV, 'Olá Pedro! Podemos agendar uma call?');
+        }
+
+        [nome, email, telefone, mensagem].forEach((el) => {
+            if (!el) return;
+            el.addEventListener('input', () => {
+                // Máscara BR para telefone (apenas exibição)
+                if (el === telefone) {
+                    const digits = (telefone.value || '').replace(/\D/g, '').slice(0, 11);
+                    let formatted = digits;
+                    if (digits.length > 0) {
+                        if (digits.length <= 10) {
+                            // (99) 9999-9999
+                            formatted = digits
+                              .replace(/(\d{2})(\d)/, '($1) $2')
+                              .replace(/(\d{4})(\d)/, '$1-$2')
+                              .replace(/(-\d{4})\d+?$/, '$1');
+                        } else {
+                            // (99) 99999-9999
+                            formatted = digits
+                              .replace(/(\d{2})(\d)/, '($1) $2')
+                              .replace(/(\d{5})(\d)/, '$1-$2')
+                              .replace(/(-\d{4})\d+?$/, '$1');
+                        }
+                        telefone.value = formatted;
+                    }
+                }
+                switch (el) {
+                    case nome: validateNome(); break;
+                    case email: validateEmail(); break;
+                    case telefone: validateTelefone(); break;
+                    case mensagem: validateMensagem(); break;
+                }
+                updateCtas();
+            });
+            el.addEventListener('blur', () => {
+                switch (el) {
+                    case nome: validateNome(); break;
+                    case email: validateEmail(); break;
+                    case telefone: validateTelefone(); break;
+                    case mensagem: validateMensagem(); break;
+                }
+            });
+        });
+
+        form.addEventListener('submit', (e) => {
+            if (!validateAll()) {
+                e.preventDefault();
+                setStatus('Por favor, corrija os campos destacados.', 'error');
+                const firstInvalid = form.querySelector('.is-invalid');
+                if (firstInvalid) firstInvalid.focus();
+                return;
+            }
+            // Feedback de envio (navegará para formsubmit)
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.value = 'ENVIANDO...';
+            }
+            setStatus('Enviando...', 'loading');
+        });
+
+        // Inicializa CTAs
+        updateCtas();
+    })();
 // ====== MENU MOBILE (com null checks) ======
 const btnMenu = document.getElementById('btn-menu');
 const menu = document.getElementById('menu-mobile');
@@ -147,6 +312,8 @@ function setupHabilidadesExpand() {
 
 window.addEventListener('load', setupHabilidadesExpand);
 
+// ... (rest of the code remains the same)
+
 // ====== PROFICIÊNCIA: CONFIGURAR BARRA DE NÍVEL ======
 function setupProficienciaRing() {
   const cards = document.querySelectorAll('.habilidade-card');
@@ -161,6 +328,8 @@ function setupProficienciaRing() {
 }
 
 window.addEventListener('load', setupProficienciaRing);
+
+// ... (rest of the code remains the same)
 
 // ====== Helper: efeito de digitação no parágrafo ======
 function typeDescription(el) {
@@ -182,6 +351,8 @@ function typeDescription(el) {
   };
   step();
 }
+
+// ... (rest of the code remains the same)
 
 // ====== FILTROS DA SEÇÃO DE PROJETOS ======
 function setupProjetosFiltros() {
@@ -266,6 +437,8 @@ function setupProjetosFiltros() {
 
 window.addEventListener('load', setupProjetosFiltros);
 
+// ... (rest of the code remains the same)
+
 // ====== Aprimoramento dos cards de projetos (badge Sem demo, rel seguro) ======
 function setupProjetosBadgesELinks() {
   const cards = document.querySelectorAll('.projetos-cards-grid .projeto-card');
@@ -306,6 +479,8 @@ function setupProjetosBadgesELinks() {
 }
 
 window.addEventListener('load', setupProjetosBadgesELinks);
+
+// ... (rest of the code remains the same)
 
 // ====== Glow reativo na borda dos cards (segue cursor) ======
 function setupProjetosReactiveGlow() {
