@@ -164,6 +164,17 @@
         updateCtas();
     })();
 
+// ==============================
+// Footer: ano atual automático
+// ==============================
+(function setupFooterYear() {
+  function setYear() {
+    const span = document.getElementById('ano-atual');
+    if (span) span.textContent = new Date().getFullYear();
+  }
+  window.addEventListener('load', setYear);
+})();
+
 // ====== MENU MOBILE (com null checks) ======
 const btnMenu = document.getElementById('btn-menu');
 const menu = document.getElementById('menu-mobile');
