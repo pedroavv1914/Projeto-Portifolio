@@ -394,6 +394,10 @@
         <section class="portifolio reveal" id="portifolio">
             <div class="interface">
                 <h2 class="titulo">MEU <span>PORTIFÓLIO.</span></h2>
+                <div class="projetos-filtros" role="tablist" aria-label="Filtros de projetos">
+                    <!-- Botões serão populados via JS; deixamos um fallback -->
+                    <button class="projeto-filter-btn active" data-filter="all" role="tab" aria-selected="true">Todas</button>
+                </div>
                 <div class="projetos-cards-grid">
 
                     <div class="projeto-card">
@@ -409,9 +413,9 @@
                                 <li>Prisma</li>
                             </ul>
                             <div class="projeto-links">
-                                <a href="https://github.com/pedroavv1914/frontend-agendamento-petshop" target="_blank" class="btn-projeto">Ver
+                                <a href="https://github.com/pedroavv1914/frontend-agendamento-petshop" target="_blank" rel="noopener noreferrer" class="btn-projeto">Ver
                                     Frontend</a>
-                                <a href="https://github.com/pedroavv1914/backend-agendamento-petshop" target="_blank"
+                                <a href="https://github.com/pedroavv1914/backend-agendamento-petshop" target="_blank" rel="noopener noreferrer"
                                     class="btn-codigo">Backend</a>
                             </div>
                         </div>
@@ -431,9 +435,9 @@
                                 <li>React Router DOM</li>
                             </ul>
                             <div class="projeto-links">
-                                <a href="https://agencia-viagens-iota.vercel.app/" target="_blank"
+                                <a href="https://agencia-viagens-iota.vercel.app/" target="_blank" rel="noopener noreferrer"
                                     class="btn-projeto">Veja o Projeto</a>
-                                <a href="https://github.com/pedroavv1914/agencia-viagens" target="_blank"
+                                <a href="https://github.com/pedroavv1914/agencia-viagens" target="_blank" rel="noopener noreferrer"
                                     class="btn-codigo">GitHub</a>
                             </div>
                         </div>
@@ -453,9 +457,9 @@
                                 <li>API GitHub</li>
                             </ul>
                             <div class="projeto-links">
-                                <a href="https://github-finder-pearl-mu.vercel.app/" target="_blank"
+                                <a href="https://github-finder-pearl-mu.vercel.app/" target="_blank" rel="noopener noreferrer"
                                     class="btn-projeto">Veja o Projeto</a>
-                                <a href="https://github.com/pedroavv1914/github_finder" target="_blank"
+                                <a href="https://github.com/pedroavv1914/github_finder" target="_blank" rel="noopener noreferrer"
                                     class="btn-codigo">GitHub</a>
                             </div>
                         </div>
@@ -477,8 +481,8 @@
                                 <li>JWT</li>
                             </ul>
                             <div class="projeto-links">
-                                <a href="https://github.com/pedroavv1914/frontend-task-manager" target="_blank" class="btn-projeto">Ver Frontend</a>
-                                <a href="https://github.com/pedroavv1914/backend-task-manager" target="_blank" class="btn-codigo"> Backend</a>
+                                <a href="https://github.com/pedroavv1914/frontend-task-manager" target="_blank" rel="noopener noreferrer" class="btn-projeto">Ver Frontend</a>
+                                <a href="https://github.com/pedroavv1914/backend-task-manager" target="_blank" rel="noopener noreferrer" class="btn-codigo"> Backend</a>
                             </div>
                         </div>
                     </div>
@@ -494,13 +498,12 @@
                                 <li>PostgreSQL</li>
                                 <li>Node.js</li>
                                 <li>Express</li>
-                                <li>Prisma</li>
                                 <li>JWT</li>
                                 <li>Docker</li>
                             </ul>
                             <div class="projeto-links">
-                                <a href="https://github.com/pedroavv1914/frontend-api-shopSphere" target="_blank" class="btn-projeto">Ver Frontend</a>
-                                <a href="https://github.com/pedroavv1914/backend-api-shopSphere" target="_blank" class="btn-codigo"> Backend</a>
+                                <a href="https://github.com/pedroavv1914/frontend-api-shopSphere" target="_blank" rel="noopener noreferrer" class="btn-projeto">Ver Frontend</a>
+                                <a href="https://github.com/pedroavv1914/backend-api-shopSphere" target="_blank" rel="noopener noreferrer" class="btn-codigo"> Backend</a>
                             </div>
                         </div>
                     </div>
@@ -570,6 +573,7 @@
         </div><!--interface-->
     </footer>
 
+    <script src="menu.js" defer></script>
 </body>
 
 </html>
