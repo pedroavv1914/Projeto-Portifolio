@@ -2418,6 +2418,120 @@ body::before {
     z-index: -1 !important;
 }
 
+/* ==============================
+   CONTATO: Acessibilidade e validação
+   ============================== */
+.sr-only {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+}
+
+.contato-proof {
+    color: #e6ffe6;
+    margin: 10px auto 18px auto;
+    font-weight: 700;
+    font-size: 0.98rem;
+    text-align: center;
+}
+
+#contato-form {
+    display: grid;
+    gap: 14px;
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#contato-form input,
+#contato-form textarea {
+    background: #0e141b;
+    border: 1.5px solid #2a394a;
+    border-radius: 10px;
+    color: #e9f3e9;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+#contato-form textarea {
+    min-height: 120px;
+}
+
+#contato-form input:focus-visible,
+#contato-form textarea:focus-visible {
+    border-color: #58DB00;
+    box-shadow: 0 0 0 3px #58DB0033;
+}
+
+.error-msg {
+    color: #ff6b6b;
+    font-size: .88rem;
+    min-height: 1.1em;
+}
+
+.is-invalid {
+    border-color: #ff6b6b !important;
+    box-shadow: 0 0 0 3px #ff6b6b22 !important;
+}
+
+.is-valid {
+    border-color: #58DB00 !important;
+}
+
+.form-status {
+    min-height: 1.2em;
+    font-weight: 600;
+}
+
+.form-status.loading { color: #d7f7a6; }
+.form-status.ok { color: #58DB00; }
+.form-status.error { color: #ff6b6b; }
+
+.contato-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 10px 0 6px 0;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 1.5px solid #58DB00;
+    color: #58DB00;
+    background: transparent;
+    transition: background .2s, color .2s, transform .15s;
+}
+
+.btn-secondary:hover, .btn-secondary:focus-visible {
+    background: #58DB00;
+    color: #0c151d;
+    transform: translateY(-1px);
+}
+
+.btn-whatsapp { border-color: #25D366; color: #25D366; }
+.btn-whatsapp:hover, .btn-whatsapp:focus-visible { background: #25D366; color: #0c151d; }
+
+.btn-mail { border-color: #4ea8de; color: #4ea8de; }
+.btn-mail:hover, .btn-mail:focus-visible { background: #4ea8de; color: #0c151d; }
+
+.btn-agendar { border-color: #a78bfa; color: #a78bfa; }
+.btn-agendar:hover, .btn-agendar:focus-visible { background: #a78bfa; color: #0c151d; }
+
+@media (max-width: 600px) {
+    #contato-form { gap: 12px; }
+    .contato-ctas { gap: 10px; justify-content: center; }
+}
 
 .reveal {
     opacity: 0;
