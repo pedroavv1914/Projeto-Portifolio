@@ -31,22 +31,42 @@
     isolation: isolate;
 }
 
-.hero::before {
+/* Hero-specific Neon Grid Waves to ensure visibility */
+.hero::before,
+.hero::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    z-index: -1;
-    animation: rotate 30s linear infinite;
+    inset: -15% -15%;
     pointer-events: none;
+    z-index: 0; /* below .hero-content (z-index:2) */
 }
 
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+.hero::before {
+    background-image:
+      linear-gradient(rgba(88,219,0,0.18) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(88,219,0,0.18) 1px, transparent 1px);
+    background-size: 44px 44px, 44px 44px;
+    transform: perspective(900px) rotateX(52deg) translateY(-6%);
+    filter: drop-shadow(0 0 12px rgba(88,219,0,0.3));
 }
+
+.hero::after {
+    background: radial-gradient(60% 40% at 50% 60%, rgba(88,219,0,0.32), rgba(0,0,0,0) 60%);
+    mix-blend-mode: screen;
+    animation: gridWaveHero 16s linear infinite;
+}
+
+@keyframes gridWaveHero {
+    0% { transform: translateY(18%) translateX(-8%) scale(1); opacity: 0.45; }
+    50% { transform: translateY(-6%) translateX(8%) scale(1.05); opacity: 0.65; }
+    100% { transform: translateY(18%) translateX(-8%) scale(1); opacity: 0.45; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero::after { animation: none; opacity: 0.4; }
+}
+
+
 
 .hero-content {
     position: relative;
@@ -966,29 +986,7 @@ body::before {
             transparent 90%,
             transparent 100%);
     opacity: 0;
-    animation: efeitoVerdePassando 20s linear infinite;
 }
-
-@keyframes efeitoVerdePassando {
-    0% {
-        left: -100vw;
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 0.7;
-    }
-
-    90% {
-        opacity: 0.7;
-    }
-
-    100% {
-        left: 100vw;
-        opacity: 0;
-    }
-}
-
 
 .btnTopo {
     position: fixed;
@@ -2411,11 +2409,60 @@ section.topo-do-site .flex {
 }
 
 section.topo-do-site {
-    z-index: -99 !important;
+    position: relative;
+    z-index: 1 !important; /* bring hero above negative stack so ::before/::after are visible */
 }
 
 body::before {
-    z-index: -1 !important;
+    z-index: 0 !important;
+}
+
+/* Background: Neon Grid Waves (CSS only) */
+body {
+    background-color: #020207;
+    position: relative; /* create stacking context for pseudo-elements */
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    inset: -10vh -10vw; /* bleed to avoid edges during transforms */
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Grid base */
+body::before {
+    background-image:
+      linear-gradient(rgba(88,219,0,0.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(88,219,0,0.16) 1px, transparent 1px);
+    background-size: 48px 48px, 48px 48px;
+    transform: perspective(900px) rotateX(52deg) translateY(-4%);
+    filter: drop-shadow(0 0 10px rgba(88,219,0,0.25));
+}
+
+/* Wave scan light */
+body::after {
+    background: radial-gradient(60% 40% at 50% 60%, rgba(88,219,0,0.28), rgba(0,0,0,0) 60%);
+    mix-blend-mode: screen;
+    animation: gridWave 18s linear infinite;
+}
+
+@keyframes gridWave {
+    0% { transform: translateY(20%) translateX(-10%) scale(1); opacity: 0.4; }
+    50% { transform: translateY(-10%) translateX(10%) scale(1.05); opacity: 0.6; }
+    100% { transform: translateY(20%) translateX(-10%) scale(1); opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::after { animation: none; opacity: 0.35; }
+}
+
+/* Ensure main content stays above background */
+header, main, section, footer, .container, .wrapper, .content {
+    position: relative;
+    z-index: 1;
 }
 
 /* ==============================
@@ -2717,27 +2764,6 @@ footer .line-footer p a {
         opacity: 0;
         animation: efeitoVerdePassando 20s linear infinite;
     }
-
-    @keyframes efeitoVerdePassando {
-        0% {
-            top: -100vh;
-            opacity: 0;
-        }
-
-        10% {
-            opacity: 0.7;
-        }
-
-        90% {
-            opacity: 0.7;
-        }
-
-        100% {
-            top: 100vh;
-            opacity: 0;
-        }
-    }
-
 
     /* CLASSES GERAIS */
     .flex {
