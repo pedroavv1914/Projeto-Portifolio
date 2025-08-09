@@ -1,30 +1,36 @@
-let btnMenu = document.getElementById('btn-menu')
-let menu = document.getElementById('menu-mobile')
-let overlay = document.getElementById('overlay-menu')
+// ====== MENU MOBILE (com null checks) ======
+const btnMenu = document.getElementById('btn-menu');
+const menu = document.getElementById('menu-mobile');
+const overlay = document.getElementById('overlay-menu');
 
-btnMenu.addEventListener('click', ()=>{
-    menu.classList.add('abrir-menu')
-})
+if (btnMenu && menu && overlay) {
+  btnMenu.addEventListener('click', () => {
+    menu.classList.add('abrir-menu');
+  });
 
-menu.addEventListener('click', ()=>{
-    menu.classList.remove('abrir-menu')
-})
+  menu.addEventListener('click', () => {
+    menu.classList.remove('abrir-menu');
+  });
 
-overlay.addEventListener('click', ()=>{
-    menu.classList.remove('abrir-menu')
-})
+  overlay.addEventListener('click', () => {
+    menu.classList.remove('abrir-menu');
+  });
+}
 
-let btn = document.getElementById("btnTopo");
+// ====== BOTÃO VOLTAR AO TOPO (resiliente) ======
+const btn = document.getElementById('btnTopo');
 let scrollTimeout;
 
-window.addEventListener("scroll", () => {
-  btn.style.display = "block";
+if (btn) {
+  window.addEventListener('scroll', () => {
+    btn.style.display = 'block';
 
-  clearTimeout(scrollTimeout);
-  scrollTimeout = setTimeout(() => {
-    btn.style.display = "none";
-  }, 1000);
-});
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      btn.style.display = 'none';
+    }, 1000);
+  });
+}
 
 function voltarAoTopo() {
   window.scrollTo({
@@ -341,7 +347,7 @@ function setupProjetosHoloFlip() {
   const cards = Array.from(document.querySelectorAll('.projetos-cards-grid .projeto-card'));
   if (!cards.length) return;
 
-  cards.forEach(card => {
+  cards.forEach((card, idx) => {
     // Evita duplicar se já inicializado
     if (card.dataset.holoInit === 'true') return;
 
@@ -363,9 +369,15 @@ function setupProjetosHoloFlip() {
     const desc = (content && content.querySelector('p')?.textContent?.trim()) || '';
     const tags = content ? Array.from(content.querySelectorAll('.projeto-tags li')).map(li => li.textContent.trim()) : [];
 
+    const backId = `projeto-back-${idx}`;
+    const titleId = `projeto-back-title-${idx}`;
+    back.setAttribute('id', backId);
+    back.setAttribute('role', 'region');
+    back.setAttribute('aria-labelledby', titleId);
+
     back.innerHTML = `
-      <div class="projeto-back-inner">
-        <h3>${title}</h3>
+      <div class="projeto-back-inner" tabindex="-1">
+        <h3 id="${titleId}">${title}</h3>
         <p>${desc}</p>
         <h4>Tecnologias utilizadas</h4>
         <ul class="projeto-back-techs">
@@ -379,12 +391,20 @@ function setupProjetosHoloFlip() {
     toggle.className = 'projeto-toggle';
     toggle.type = 'button';
     toggle.setAttribute('aria-label', 'Ver detalhes do projeto');
+    toggle.setAttribute('aria-controls', backId);
+    toggle.setAttribute('aria-expanded', 'false');
     toggle.innerHTML = '<span class="projeto-toggle-icon" aria-hidden="true">⟲</span>';
 
     toggle.addEventListener('click', (e) => {
       e.stopPropagation();
       const flipped = card.classList.toggle('is-flipped');
       toggle.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+      toggle.setAttribute('aria-expanded', flipped ? 'true' : 'false');
+      back.setAttribute('aria-hidden', flipped ? 'false' : 'true');
+      if (flipped) {
+        const backInner = back.querySelector('.projeto-back-inner');
+        backInner && backInner.focus();
+      }
     });
 
     // Monta estrutura final
@@ -429,6 +449,14 @@ function setupProjetosHoloFlip() {
       const willFlip = typeof force === 'boolean' ? force : !card.classList.contains('is-flipped');
       card.classList.toggle('is-flipped', willFlip);
       toggle.setAttribute('aria-pressed', willFlip ? 'true' : 'false');
+      toggle.setAttribute('aria-expanded', willFlip ? 'true' : 'false');
+      back.setAttribute('aria-hidden', willFlip ? 'false' : 'true');
+      if (willFlip) {
+        const backInner = back.querySelector('.projeto-back-inner');
+        backInner && backInner.focus();
+      } else {
+        toggle.focus();
+      }
     };
 
     card.addEventListener('keydown', (e) => {
