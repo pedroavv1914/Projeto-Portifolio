@@ -1733,15 +1733,17 @@ h2.titulo span {
     gap: 10px;
 }
 
-.btn-projeto,
-.btn-codigo {
-    background: #58DB00;
-    color: #101c2a;
+.btn-projeto, .btn-codigo {
     padding: 8px 18px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
     transition: background 0.2s, color 0.2s;
+}
+
+.btn-projeto {
+    background: #58DB00;
+    color: #101c2a;
 }
 
 .btn-codigo {
