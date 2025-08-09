@@ -5,6 +5,11 @@
     color: var(--neon);
 }
 
+/* Ensure content after the title doesn't stick to the underline */
+h2.titulo + * {
+    margin-top: 18px;
+}
+
 
 .habilidade-icone img {
     width: 42px;
@@ -1016,16 +1021,70 @@ body::before {
 }
 
 h2.titulo {
+    /* Premium section title */
+    display: inline-block;
+    position: relative;
     margin-top: 80px;
-    margin-bottom: 56px;
-    color: white;
-    font-size: 38px;
+    margin-bottom: 36px; /* more space below title */
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.4px;
+    color: #ffffff;
+    text-shadow: 0 0 18px rgba(88,219,0,0.12);
+    /* Responsive size */
+    font-size: clamp(1.6rem, 1.2rem + 2.2vw, 2.6rem);
     text-align: center;
 }
+
+/* Optional kicker using data attribute (e.g., <h2 class="titulo" data-kicker="Seção"></h2>) */
+h2.titulo::before {
+    content: attr(data-kicker);
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 8px;
+}
+
+/* Underline neon glow */
+h2.titulo::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    width: 72%;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(88,219,0,0), rgba(88,219,0,1), rgba(255,255,255,0.8), rgba(88,219,0,1), rgba(88,219,0,0));
+    border-radius: 3px;
+    box-shadow: 0 0 18px rgba(88,219,0,0.32);
+    transform: translateX(-50%);
+}
+
+/* Subtle entrance animation */
+.reveal h2.titulo {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: tituloIn 700ms ease forwards;
+}
+@keyframes tituloIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal h2.titulo { animation: none; opacity: 1; transform: none; }
+}
+
+/* Anchor comfort for all sections */
+section[id] { scroll-margin-top: 72px; }
 
 h2.titulo span {
     color: #58DB00;
 }
+
+/* Spacing between HERO and SOBRE */
+#inicio { padding-bottom: clamp(56px, 7vw, 120px); }
+#sobre  { padding-top:    clamp(40px, 5vw, 96px); }
 
 /* ESTILO DOS CARDS DE HABILIDADES */
 .habilidades-filtros {
