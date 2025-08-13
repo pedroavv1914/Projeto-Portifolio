@@ -207,181 +207,160 @@
         <section class="especialidades reveal" id="especialidades">
             <div class="interface">
                 <h2 class="titulo">MINHAS <span>ESPECIALIDADES.</span></h2>
-                <div class="habilidades-filtros" role="tablist" aria-label="Filtros de habilidades">
+                <!-- <div class="habilidades-filtros" role="tablist" aria-label="Filtros de habilidades">
                     <button class="filtro-btn active" data-filter="all" role="tab" aria-selected="true">Todas</button>
                     <button class="filtro-btn" data-filter="front-end" role="tab" aria-selected="false">Front-end</button>
                     <button class="filtro-btn" data-filter="back-end" role="tab" aria-selected="false">Back-end</button>
                     <button class="filtro-btn" data-filter="database" role="tab" aria-selected="false">Banco de Dados</button>
                     <button class="filtro-btn" data-filter="devops" role="tab" aria-selected="false">DevOps</button>
                     <button class="filtro-btn" data-filter="tools" role="tab" aria-selected="false">Ferramentas</button>
-                </div>
-                <div class="habilidades-cards-grid">
+                    <button id="spec-toggle-details" class="filtro-btn filtro-toggle" aria-pressed="false" aria-label="Alternar detalhes">Ocultar detalhes</button>
+                </div> -->
+                <div class="habilidades-paineis" role="list">
+                    <!-- Painel: Front-end -->
+                    <section class="painel-categoria" data-category="front-end" role="region" aria-labelledby="painel-front-end-title">
+                        <button class="painel-header" id="painel-front-end-title" aria-expanded="true">
+                            <span class="painel-titulo"><i class="bi bi-braces"></i> Front-end</span>
+                            <span class="painel-meta">JavaScript, React, TypeScript, Next.js</span>
+                            <i class="bi bi-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="painel-body">
+                            <ul class="skill-list">
+                                <li class="skill-row">
+                                    <span class="skill-icon"><i class="bi bi-filetype-js"></i></span>
+                                    <span class="skill-name">JavaScript</span>
+                                    <span class="level-badge level-strong" aria-label="Nível: Forte">Forte</span>
+                                    <ul class="skill-chips">
+                                        <li>ES6+</li><li>DOM</li><li>APIs</li><li>Async/Await</li><li>Fetch</li>
+                                    </ul>
+                                </li>
+                                <li class="skill-row">
+                                    <span class="skill-icon"><i class="bi bi-filetype-jsx"></i></span>
+                                    <span class="skill-name">React</span>
+                                    <span class="level-badge level-strong" aria-label="Nível: Forte">Forte</span>
+                                    <ul class="skill-chips">
+                                        <li>Hooks</li><li>SPA</li><li>Styled Components</li>
+                                    </ul>
+                                </li>
+                                <li class="skill-row">
+                                    <span class="skill-icon"><i class="bi bi-filetype-tsx"></i></span>
+                                    <span class="skill-name">TypeScript</span>
+                                    <span class="level-badge level-strong" aria-label="Nível: Forte">Forte</span>
+                                    <ul class="skill-chips">
+                                        <li>Type Safety</li><li>ESNext</li><li>Full-stack</li>
+                                    </ul>
+                                </li>
+                                <li class="skill-row">
+                                    <span class="skill-icon"><i class="bi bi-window-stack"></i></span>
+                                    <span class="skill-name">Next.js</span>
+                                    <span class="level-badge level-strong" aria-label="Nível: Forte">Forte</span>
+                                    <ul class="skill-chips">
+                                        <li>SSR</li><li>SSG</li><li>API Routes</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
 
-                    <!-- Habilidade 1 -->
-                    <div class="habilidade-card" data-category="front-end">
-                        <div class="habilidade-icone"><i class="bi bi-filetype-js"></i></div>
-                        <h3>JavaScript</h3>
-                        <div class="habilidade-proficiencia" aria-label="Proficiência: Forte">
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
+                    <!-- Painel: Back-end -->
+                    <section class="painel-categoria" data-category="back-end" role="region" aria-labelledby="painel-back-end-title">
+                        <button class="painel-header" id="painel-back-end-title" aria-expanded="true">
+                            <span class="painel-titulo"><i class="bi bi-cpu"></i> Back-end</span>
+                            <span class="painel-meta">Node.js, Python</span>
+                            <i class="bi bi-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="painel-body">
+                            <ul class="skill-list">
+                                <li class="skill-row">
+                                    <span class="skill-icon"><i class="bi bi-filetype-js"></i></span>
+                                    <span class="skill-name">Node.js</span>
+                                    <span class="level-badge level-strong" aria-label="Nível: Forte">Forte</span>
+                                    <ul class="skill-chips">
+                                        <li>Express</li><li>API REST</li><li>Prisma</li>
+                                    </ul>
+                                </li>
+                                <li class="skill-row">
+                                    <span class="skill-icon"><i class="bi bi-filetype-py"></i></span>
+                                    <span class="skill-name">Python</span>
+                                    <span class="level-badge level-good" aria-label="Nível: Bom">Bom</span>
+                                    <ul class="skill-chips">
+                                        <li>Django</li><li>Flask</li><li>Automação</li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
-                        <p>Criação de interatividade, manipulação de elementos e experiências dinâmicas no navegador.
-                        </p>
-                        <ul class="habilidade-tags">
-                            <li>ES6+</li>
-                            <li>DOM</li>
-                            <li>APIs</li>
-                            <li>Async/Await</li>
-                            <li>Fetch</li>
-                        </ul>
-                    </div>
-                    <!-- Habilidade 2 -->
-                    <div class="habilidade-card" data-category="back-end">
-                        <div class="habilidade-icone"><img src="images/nodejs.png" alt="Node.js"></div>
-                        <h3>Node.js</h3>
-                        <div class="habilidade-proficiencia" aria-label="Proficiência: Forte">
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                        </div>
-                        <p>Execução de JavaScript no servidor, criação de APIs, servidores web e aplicações completas.
-                        </p>
-                        <ul class="habilidade-tags">
-                            <li>Express</li>
-                            <li>API REST</li>
-                            <li>Prisma</li>
-                        </ul>
-                    </div>
-                    <!-- Habilidade 3 -->
-                    <div class="habilidade-card" data-category="back-end">
-                        <div class="habilidade-icone"><i class="bi bi-filetype-py"></i><!--<img src="images/python.png" alt="Python">--></div>
-                        <h3>Python</h3>
-                        <div class="habilidade-proficiencia" aria-label="Proficiência: Boa">
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot"></span>
-                        </div>
-                        <p>Linguagem versátil para web, ciência de dados, automação e IA, com amplo ecossistema.</p>
-                        <ul class="habilidade-tags">
-                            <li>Django</li>
-                            <li>Flask</li>
-                            <li>Automação</li>
-                        </ul>
-                    </div>
-                    <!-- Habilidade 4 -->
-                    <div class="habilidade-card" data-category="front-end">
-                        <div class="habilidade-icone"><i class="bi bi-filetype-jsx"></i></div>
-                        <h3>React</h3>
-                        <div class="habilidade-proficiencia" aria-label="Proficiência: Forte">
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                        </div>
-                        <p>Desenvolvimento de interfaces modernas e reativas para aplicações web.</p>
-                        <ul class="habilidade-tags">
-                            <li>Hooks</li>
-                            <li>SPA</li>
-                            <li>Styled Components</li>
-                        </ul>
-                    </div>
-                    <!-- Habilidade 5 -->
-                    <div class="habilidade-card" data-category="database">
-                        <div class="habilidade-icone"><i class="bi bi-database"></i></div>
-                        <h3>SQL</h3>
-                        <div class="habilidade-proficiencia" aria-label="Proficiência: Forte">
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                        </div>
-                        <p>Modelagem, consultas e manipulação de dados em bancos relacionais.</p>
-                        <ul class="habilidade-tags">
-                            <li>MySQL</li>
-                            <li>PostgreSQL</li>
-                            <li>SQLite</li>
-                        </ul>
-                    </div>
-                    <!-- Habilidade 6 -->
-                    <div class="habilidade-card" data-category="tools">
-                        <div class="habilidade-icone"><i class="bi bi-git"></i></div>
-                        <h3>Git & GitHub</h3>
-                        <div class="habilidade-proficiencia" aria-label="Proficiência: Forte">
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                        </div>
-                        <p>Controle de versão, colaboração e deploy de projetos.</p>
-                        <ul class="habilidade-tags">
-                            <li>Branching</li>
-                            <li>Pull Request</li>
-                            <li>Actions</li>
-                        </ul>
-                    </div>
-                    <!-- Habilidade 7 -->
-                    <div class="habilidade-card" data-category="devops">
-                        <div class="habilidade-icone"><i class="bi bi-box"></i></div>
-                        <h3>Docker</h3>
-                        <div class="habilidade-proficiencia" aria-label="Proficiência: Boa">
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot"></span>
-                        </div>
-                        <p>Containerização de aplicações para ambientes de desenvolvimento e produção.</p>
-                        <ul class="habilidade-tags">
-                            <li>Docker Compose</li>
-                            <li>Images</li>
-                            <li>Volumes</li>
-                        </ul>
-                    </div>
-                    <!-- Habilidade 8 -->
-                    <div class="habilidade-card" data-category="front-end">
-                        <div class="habilidade-icone"><i class="bi bi-filetype-tsx"></i></div>
-                        <h3>TypeScript</h3>
-                        <div class="habilidade-proficiencia" aria-label="Proficiência: Forte">
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                        </div>
-                        <p>Superset do JavaScript com tipagem estática, trazendo mais segurança e produtividade no desenvolvimento web moderno.</p>
-                        <ul class="habilidade-tags">
-                            <li>Type Safety</li>
-                            <li>ESNext</li>
-                            <li>Front-end & Back-end</li>
-                        </ul>
-                    </div>
-                    <!-- Habilidade 9 -->
-                    <div class="habilidade-card" data-category="front-end">
-                        <div class="habilidade-icone"><i class="bi bi-window-stack"></i></div>
-                        <h3>Next.js</h3>
-                        <div class="habilidade-proficiencia" aria-label="Proficiência: Forte">
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                        </div>
-                        <p>Framework React para aplicações performáticas com SSR/SSG, roteamento e otimizações nativas.</p>
-                        <ul class="habilidade-tags">
-                            <li>SSR</li>
-                            <li>SSG</li>
-                            <li>API Routes</li>
-                        </ul>
-                    </div>
-                    <!-- Habilidade 10 -->
-                    <div class="habilidade-card" data-category="database">
-                        <div class="habilidade-icone"><i class="bi bi-collection"></i></div>
-                        <h3>MongoDB</h3>
-                        <div class="habilidade-proficiencia" aria-label="Proficiência: Boa">
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot active"></span>
-                            <span class="proficiencia-dot"></span>
-                        </div>
-                        <p>Banco de dados NoSQL orientado a documentos, escalável e flexível para aplicações modernas.</p>
-                        <ul class="habilidade-tags">
-                            <li>NoSQL</li>
-                            <li>Aggregation</li>
-                            <li>Atlas</li>
-                        </ul>
-                    </div>
+                    </section>
 
+                    <!-- Painel: Banco de Dados -->
+                    <section class="painel-categoria" data-category="database" role="region" aria-labelledby="painel-database-title">
+                        <button class="painel-header" id="painel-database-title" aria-expanded="true">
+                            <span class="painel-titulo"><i class="bi bi-database"></i> Banco de Dados</span>
+                            <span class="painel-meta">SQL, MongoDB</span>
+                            <i class="bi bi-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="painel-body">
+                            <ul class="skill-list">
+                                <li class="skill-row">
+                                    <span class="skill-icon"><i class="bi bi-database"></i></span>
+                                    <span class="skill-name">SQL</span>
+                                    <span class="level-badge level-strong" aria-label="Nível: Forte">Forte</span>
+                                    <ul class="skill-chips">
+                                        <li>MySQL</li><li>PostgreSQL</li><li>SQLite</li>
+                                    </ul>
+                                </li>
+                                <li class="skill-row">
+                                    <span class="skill-icon"><i class="bi bi-collection"></i></span>
+                                    <span class="skill-name">MongoDB</span>
+                                    <span class="level-badge level-good" aria-label="Nível: Bom">Bom</span>
+                                    <ul class="skill-chips">
+                                        <li>NoSQL</li><li>Aggregation</li><li>Atlas</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Painel: DevOps -->
+                    <section class="painel-categoria" data-category="devops" role="region" aria-labelledby="painel-devops-title">
+                        <button class="painel-header" id="painel-devops-title" aria-expanded="true">
+                            <span class="painel-titulo"><i class="bi bi-diagram-3"></i> DevOps</span>
+                            <span class="painel-meta">Docker</span>
+                            <i class="bi bi-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="painel-body">
+                            <ul class="skill-list">
+                                <li class="skill-row">
+                                    <span class="skill-icon"><i class="bi bi-box"></i></span>
+                                    <span class="skill-name">Docker</span>
+                                    <span class="level-badge level-good" aria-label="Nível: Bom">Bom</span>
+                                    <ul class="skill-chips">
+                                        <li>Docker Compose</li><li>Images</li><li>Volumes</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Painel: Ferramentas -->
+                    <section class="painel-categoria" data-category="tools" role="region" aria-labelledby="painel-tools-title">
+                        <button class="painel-header" id="painel-tools-title" aria-expanded="true">
+                            <span class="painel-titulo"><i class="bi bi-tools"></i> Ferramentas</span>
+                            <span class="painel-meta">Git & GitHub</span>
+                            <i class="bi bi-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="painel-body">
+                            <ul class="skill-list">
+                                <li class="skill-row">
+                                    <span class="skill-icon"><i class="bi bi-git"></i></span>
+                                    <span class="skill-name">Git & GitHub</span>
+                                    <span class="level-badge level-strong" aria-label="Nível: Forte">Forte</span>
+                                    <ul class="skill-chips">
+                                        <li>Branching</li><li>Pull Request</li><li>Actions</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
                 </div>
             </div>
         </section><!--especialidades-->
