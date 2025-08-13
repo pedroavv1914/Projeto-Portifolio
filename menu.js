@@ -506,23 +506,12 @@ function setupProjetosReactiveGlow() {
       const y = e.clientY - rect.top;
       card.style.setProperty('--mx', `${x}px`);
       card.style.setProperty('--my', `${y}px`);
-
-      // 3D tilt baseado na posição do cursor
-      const cx = rect.width / 2;
-      const cy = rect.height / 2;
-      const dx = (x - cx) / cx; // -1 .. 1
-      const dy = (y - cy) / cy; // -1 .. 1
-      const maxTilt = 10; // graus (reação mais rápida/visível)
-      const ry = dx * maxTilt; // rotateY inclina conforme eixo X
-      const rx = -dy * maxTilt; // rotateX inclina conforme eixo Y
-      card.style.setProperty('--ry', `${ry.toFixed(2)}deg`);
-      card.style.setProperty('--rx', `${rx.toFixed(2)}deg`);
+      // Tilt 3D desativado: não definir --rx/--ry
     });
     card.addEventListener('mouseleave', () => {
       card.style.removeProperty('--mx');
       card.style.removeProperty('--my');
-      card.style.removeProperty('--rx');
-      card.style.removeProperty('--ry');
+      // Não há --rx/--ry para limpar
     });
   });
 }
