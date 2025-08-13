@@ -54,6 +54,202 @@ h2.titulo + * {
     position: relative;
     z-index: 1;
 }
+
+/* ===== ESPECIALIDADES V2 — PAINÉIS POR CATEGORIA ===== */
+.habilidades-paineis {
+    display: grid;
+    gap: 16px;
+}
+
+.habilidades-paineis .is-hidden { display: none !important; }
+
+.painel-categoria {
+    backdrop-filter: saturate(130%) blur(10px);
+    background: rgba(10, 26, 46, 0.5);
+    border: 1px solid rgba(88, 219, 0, 0.18);
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25), inset 0 0 0 1px rgba(255,255,255,0.04);
+    overflow: hidden;
+}
+
+.painel-header {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    background: linear-gradient(180deg, rgba(88,219,0,0.06), rgba(88,219,0,0));
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    text-align: left;
+}
+
+.painel-titulo { font-weight: 700; letter-spacing: .2px; }
+.painel-meta { color: #9fb4c8; font-size: .95rem; }
+.painel-header .bi-chevron-down { transition: transform .3s ease; color: var(--neon); }
+.painel-categoria.collapsed .painel-header .bi-chevron-down { transform: rotate(-90deg); }
+
+.painel-body {
+    padding: 0 16px 16px 16px;
+}
+
+/* Accordion reveal using max-height for wide compatibility */
+.painel-categoria.collapsed .painel-body { display: none; }
+
+.skill-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+
+.skill-row {
+    display: grid;
+    grid-template-columns: 28px 1fr max-content;
+    gap: 10px 14px;
+    align-items: center;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 10px 12px;
+    transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+
+.skill-icon { width: 28px; height: 28px; display: grid; place-items: center; color: var(--neon); opacity: .9; }
+.skill-icon img { width: 24px; height: 24px; object-fit: contain; filter: contrast(1.05) brightness(1); }
+.skill-name { font-weight: 600; color: #e6f1ff; letter-spacing: .2px; }
+
+.level-badge {
+    font-size: .78rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(88,219,0,0.28);
+    background: rgba(88,219,0,0.10);
+    color: #c9ffb5;
+    white-space: nowrap;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+.level-badge.level-strong { background: rgba(88,219,0,0.18); color: #d8ffd0; border-color: rgba(88,219,0,0.35); }
+.level-badge.level-good { background: rgba(88,219,0,0.10); color: #c9ffb5; border-color: rgba(88,219,0,0.25); }
+
+.skill-chips { grid-column: 2 / -1; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+.skill-chips li {
+    list-style: none;
+    border: 1px solid rgba(88,219,0,0.25);
+    color: #d7ffe0;
+    background: rgba(88,219,0,0.05);
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: .78rem;
+    line-height: 1.2;
+    letter-spacing: .1px;
+}
+
+.skill-chips li.chip-hidden { display: none; }
+.skill-chips li.chip-toggle {
+    cursor: pointer;
+    border-color: rgba(88,219,0,0.45);
+    color: #caffb8;
+    background: rgba(88,219,0,0.10);
+    user-select: none;
+}
+.skill-chips li.chip-toggle:focus-visible,
+.skill-chips li.chip-toggle:hover { box-shadow: 0 0 0 2px rgba(88,219,0,0.25) inset; }
+
+/* Hover/focus microinterações */
+.skill-row:hover,
+.skill-row:focus-within { border-color: rgba(88,219,0,0.35); background: rgba(88,219,0,0.05); box-shadow: 0 0 0 3px rgba(88,219,0,0.08) inset; }
+.skill-row { outline: none; }
+.skill-row:focus-visible { box-shadow: 0 0 0 3px rgba(88,219,0,0.22); }
+
+/* ====== Glassy Tiles (Mosaico premium) ====== */
+.habilidades-paineis .skill-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 stacks por linha */
+  gap: 14px;
+}
+
+.habilidades-paineis .skill-row {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 14px;
+  padding: 14px 14px 12px 18px;
+  min-height: 110px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+}
+
+/* micro-bar vertical (nível) */
+.habilidades-paineis .skill-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, rgba(88,219,0,0.0), rgba(88,219,0,0.65), rgba(88,219,0,0.0));
+  opacity: .85;
+}
+.habilidades-paineis .skill-row[data-level="strong"]::before { background: linear-gradient(180deg, rgba(88,219,0,0.15), rgba(88,219,0,0.85), rgba(88,219,0,0.15)); }
+.habilidades-paineis .skill-row[data-level="good"]::before { background: linear-gradient(180deg, rgba(88,219,0,0.08), rgba(88,219,0,0.55), rgba(88,219,0,0.08)); }
+
+/* head: ícone + nome */
+.habilidades-paineis .skill-icon {
+  width: 44px; height: 44px; display: grid; place-items: center; opacity: 1;
+  color: var(--neon);
+  background: radial-gradient(60% 60% at 50% 50%, rgba(88,219,0,0.10) 0%, rgba(88,219,0,0.04) 100%);
+  border: 1px solid rgba(88,219,0,0.25);
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(88,219,0,0.08) inset, 0 6px 14px rgba(0,0,0,0.2);
+}
+.habilidades-paineis .skill-icon i {
+  font-size: 30px; line-height: 1; color: var(--neon);
+  text-shadow: 0 0 10px rgba(88,219,0,0.35), 0 0 22px rgba(88,219,0,0.18);
+}
+.habilidades-paineis .skill-icon img {
+  width: 28px; height: 28px; object-fit: contain;
+  filter: contrast(1.05) brightness(1) drop-shadow(0 0 10px rgba(88,219,0,0.35)) drop-shadow(0 0 18px rgba(88,219,0,0.18));
+}
+.habilidades-paineis .skill-name { font-size: 1.05rem; font-weight: 700; margin-top: 6px; }
+
+/* badge no canto superior direito */
+.habilidades-paineis .level-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* chips na base do tile */
+.habilidades-paineis .skill-chips { margin-top: auto; padding-top: 10px; }
+
+/* hover tilt + glow */
+.habilidades-paineis .skill-row:hover,
+.habilidades-paineis .skill-row:focus-visible {
+  border-color: rgba(88,219,0,0.35);
+  box-shadow: 0 10px 22px rgba(0,0,0,.20), 0 0 0 1px rgba(88,219,0,0.18) inset, 0 0 22px rgba(88,219,0,0.06);
+  transform: none;
+}
+
+/* Exibição de chips: compacto por padrão, revelar em hover/focus ou estado aberto */
+.habilidades-paineis .skill-chips { display: none; }
+.habilidades-paineis .skill-row:hover .skill-chips,
+.habilidades-paineis .skill-row:focus-within .skill-chips,
+.habilidades-paineis .skill-row.reveal .skill-chips { display: flex; }
+
+/* Toggle global: detalhes sempre visíveis quando ativo */
+.habilidades-paineis:not(.details-off) .skill-chips { display: flex; }
+/* removed old grid override for details-off in tile mode */
+
+@media (max-width: 700px) {
+    /* Tiles: 1 coluna no mobile */
+    .habilidades-paineis .skill-list { grid-template-columns: 1fr; }
+    .level-badge { position: absolute; top: 10px; right: 10px; }
+}
+/* ===== FIM ESPECIALIDADES V2 ===== */
+
 /* ===== SEÇÃO HERO ===== */
 .hero {
     min-height: 100vh;
@@ -1527,6 +1723,16 @@ h2.titulo span {
     max-height: 200px;
     opacity: 1;
     margin: 8px 0 12px 0;
+}
+
+.habilidades-cards-grid.details-off .habilidade-card p {
+    max-height: 0 !important;
+    opacity: 0 !important;
+    margin: 0 !important;
+}
+
+.habilidades-cards-grid.details-off .habilidade-card .habilidade-tags {
+    display: none !important;
 }
 
 .habilidade-proficiencia {
