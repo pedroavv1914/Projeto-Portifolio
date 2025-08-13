@@ -234,14 +234,17 @@ function setupHabilidadesFiltro() {
   const filtroContainer = document.querySelector('.habilidades-filtros');
   if (!filtroContainer) return; // seção pode não estar na página
 
-  const botoes = Array.from(filtroContainer.querySelectorAll('.filtro-btn'));
-  const cards = Array.from(document.querySelectorAll('.habilidade-card'));
+  const botoes = Array.from(filtroContainer.querySelectorAll('.filtro-btn[data-filter]'));
+  const paineis = Array.from(document.querySelectorAll('.habilidades-paineis .painel-categoria'));
+  const painelsWrap = document.querySelector('.habilidades-paineis');
+  const toggleBtn = document.getElementById('spec-toggle-details');
 
   function aplicarFiltro(valor) {
-    cards.forEach(card => {
-      const categoria = card.getAttribute('data-category');
+    paineis.forEach(painel => {
+      const categoria = painel.getAttribute('data-category');
       const mostrar = valor === 'all' || categoria === valor;
-      card.classList.toggle('is-hidden', !mostrar);
+      painel.classList.toggle('is-hidden', !mostrar);
+      painel.setAttribute('aria-hidden', (!mostrar).toString());
     });
   }
 
@@ -252,14 +255,206 @@ function setupHabilidadesFiltro() {
       btn.classList.add('active');
       const filtro = btn.getAttribute('data-filter') || 'all';
       aplicarFiltro(filtro);
+      // ARIA tab state
+      filtroContainer.querySelectorAll('.filtro-btn[role="tab"]').forEach(tab => {
+        tab.setAttribute('aria-selected', tab === btn ? 'true' : 'false');
+      });
     });
   });
 
   // Estado inicial: "Todas"
   aplicarFiltro('all');
+
+  // Toggle de detalhes (mostrar/ocultar chips)
+  if (toggleBtn && painelsWrap) {
+    // estado inicial
+    const startPressed = toggleBtn.getAttribute('aria-pressed') === 'true';
+    painelsWrap.classList.toggle('details-off', !startPressed);
+    toggleBtn.textContent = startPressed ? 'Ocultar detalhes' : 'Mostrar detalhes';
+
+    toggleBtn.addEventListener('click', () => {
+      const pressed = toggleBtn.getAttribute('aria-pressed') === 'true';
+      const next = !pressed;
+      toggleBtn.setAttribute('aria-pressed', String(next));
+      painelsWrap.classList.toggle('details-off', !next);
+      toggleBtn.textContent = next ? 'Ocultar detalhes' : 'Mostrar detalhes';
+    });
+  }
+}
+
+function setupHabilidadesPaineisAccordion() {
+  const paineis = document.querySelectorAll('.habilidades-paineis .painel-categoria');
+  if (!paineis.length) return;
+
+  paineis.forEach(painel => {
+    const header = painel.querySelector('.painel-header');
+    const body = painel.querySelector('.painel-body');
+    if (!header || !body) return;
+
+    header.setAttribute('aria-controls', body.id || '');
+    header.setAttribute('type', 'button');
+    header.addEventListener('click', () => {
+      const expanded = header.getAttribute('aria-expanded') === 'true';
+      header.setAttribute('aria-expanded', String(!expanded));
+      painel.classList.toggle('collapsed', expanded);
+    });
+    header.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        header.click();
+      }
+    });
+  });
 }
 
 window.addEventListener('load', setupHabilidadesFiltro);
+window.addEventListener('load', setupHabilidadesPaineisAccordion);
+
+// ====== LISTA PRO + BADGES (Option C) INTERAÇÕES ======
+function setupHabilidadesOptionCInteractions() {
+  const container = document.querySelector('.habilidades-paineis');
+  if (!container) return;
+
+  const allRows = Array.from(container.querySelectorAll('.skill-row'));
+  if (!allRows.length) return;
+
+  // Make rows focusable and set initial aria state
+  allRows.forEach(row => {
+    if (!row.hasAttribute('tabindex')) row.setAttribute('tabindex', '0');
+    row.setAttribute('role', 'button');
+    row.setAttribute('aria-expanded', 'false');
+
+    // Click toggles reveal
+    row.addEventListener('click', (e) => {
+      // Avoid toggling when clicking a chip link in future; currently chips are plain lis
+      toggleRowReveal(row);
+    });
+
+    // Keyboard support
+    row.addEventListener('keydown', (e) => {
+      const key = e.key;
+      if (key === 'Enter' || key === ' ') {
+        e.preventDefault();
+        toggleRowReveal(row);
+      } else if (key === 'ArrowDown' || key === 'ArrowUp') {
+        e.preventDefault();
+        const visibleRows = Array.from(container.querySelectorAll('.skill-row'))
+          .filter(r => r.offsetParent !== null); // visible in layout
+        const idx = visibleRows.indexOf(row);
+        const delta = key === 'ArrowDown' ? 1 : -1;
+        const next = visibleRows[idx + delta];
+        if (next) next.focus();
+      }
+    });
+  });
+
+  function toggleRowReveal(row) {
+    const isOpen = row.classList.toggle('reveal');
+    row.setAttribute('aria-expanded', String(isOpen));
+    // Integrate with chips compression: expand all chips on open, recompress on close
+    const chips = row.querySelector('.skill-chips');
+    if (chips) {
+      if (isOpen) {
+        expandChips(chips);
+      } else {
+        compressChips(chips);
+      }
+    }
+  }
+}
+
+window.addEventListener('load', setupHabilidadesOptionCInteractions);
+
+// ====== Chips compression (+N toggle) ======
+function setupSkillChipsCompression(limit = 3) {
+  const lists = document.querySelectorAll('.skill-chips');
+  lists.forEach(ul => compressChips(ul, limit));
+
+  // Delegate clicks on toggle chips
+  document.addEventListener('click', (e) => {
+    const toggle = e.target.closest('li.chip-toggle');
+    if (!toggle) return;
+    const ul = toggle.parentElement;
+    if (!ul || !ul.classList.contains('skill-chips')) return;
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    if (expanded) {
+      compressChips(ul, parseInt(toggle.getAttribute('data-limit') || '3', 10));
+    } else {
+      expandChips(ul);
+    }
+  });
+
+  // Keyboard accessibility
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const toggle = e.target.closest('li.chip-toggle');
+    if (!toggle) return;
+    e.preventDefault();
+    toggle.click();
+  });
+}
+
+function compressChips(ul, limit = 3) {
+  const items = Array.from(ul.querySelectorAll('li:not(.chip-toggle)'));
+  const toggle = ul.querySelector('li.chip-toggle');
+  const extra = items.slice(limit);
+  items.forEach((li, idx) => li.classList.toggle('chip-hidden', idx >= limit));
+  const count = Math.max(extra.length, 0);
+  if (count > 0) {
+    if (!toggle) {
+      const t = document.createElement('li');
+      t.className = 'chip-toggle';
+      t.setAttribute('role', 'button');
+      t.setAttribute('tabindex', '0');
+      ul.appendChild(t);
+    }
+    const tgl = ul.querySelector('li.chip-toggle');
+    tgl.textContent = `+${count}`;
+    tgl.setAttribute('aria-expanded', 'false');
+    tgl.setAttribute('aria-label', `Mostrar mais ${count} itens`);
+    tgl.setAttribute('data-limit', String(limit));
+  } else if (toggle) {
+    toggle.remove();
+  }
+}
+
+function expandChips(ul) {
+  const items = Array.from(ul.querySelectorAll('li:not(.chip-toggle)'));
+  const toggle = ul.querySelector('li.chip-toggle');
+  items.forEach(li => li.classList.remove('chip-hidden'));
+  if (toggle) {
+    toggle.textContent = '−';
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Mostrar menos');
+  }
+}
+
+window.addEventListener('load', () => setupSkillChipsCompression(3));
+
+// ====== Glassy Tiles helpers ======
+function setupSkillTilesLevel() {
+  const tiles = document.querySelectorAll('.habilidades-paineis .skill-row');
+  tiles.forEach(tile => {
+    const badge = tile.querySelector('.level-badge');
+    if (!badge) return;
+    const txt = (badge.textContent || '').trim().toLowerCase();
+    if (txt.includes('forte') || txt.includes('strong')) {
+      tile.setAttribute('data-level', 'strong');
+    } else if (txt.includes('bom') || txt.includes('good')) {
+      tile.setAttribute('data-level', 'good');
+    } else {
+      tile.removeAttribute('data-level');
+    }
+  });
+}
+
+function setupSkillTilesTilt() {
+  // Distortion/tilt effect disabled by request; keep function as no-op.
+  return;
+}
+
+window.addEventListener('load', setupSkillTilesLevel);
+window.addEventListener('load', setupSkillTilesTilt);
 
 // ====== EXPANSÃO/CONTRAÇÃO DOS CARDS DE HABILIDADES ======
 function setupHabilidadesExpand() {
