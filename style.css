@@ -1676,16 +1676,15 @@ h2.titulo span {
     background: #000;
     border-radius: 18px;
     overflow: hidden;
-    border: 2px solid transparent;
-    box-shadow: none;
+    border: 2px solid rgba(88,219,0,0.08);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     display: flex;
     flex-direction: column;
-    /* resposta mais rápida ao mouse: transform com duração curta */
-    transition: transform 0.09s ease-out, border-color 0.28s cubic-bezier(.4, 0, .2, 1), box-shadow 0.28s cubic-bezier(.4, 0, .2, 1);
-    position: relative; /* para glow reativo */
-    transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-    transform-style: preserve-3d;
-    perspective: 1200px; /* para flip do conteúdo interno */
+    transition: border-color 0.28s cubic-bezier(.4, 0, .2, 1), box-shadow 0.28s cubic-bezier(.4, 0, .2, 1);
+    position: relative;
+    transform: none;
+    transform-style: flat;
+    perspective: none;
     min-height: 420px;
     will-change: transform;
 }
@@ -1695,9 +1694,9 @@ h2.titulo span {
 }
 
 .projeto-card:hover {
-    transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-4px) scale(1.015);
-    border-color: #58DB00;
-    box-shadow: 0 0 12px #58DB00, 0 0 24px #58DB00aa;
+    transform: none;
+    border-color: rgba(88,219,0,0.35);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.28), 0 0 10px rgba(88,219,0,0.22);
 }
 
 /* ===== ESTRUTURA HOLO/FLIP ===== */
@@ -1780,7 +1779,7 @@ h2.titulo span {
     font-weight: 700;
     font-size: clamp(1.05rem, 2.4vw, 1.35rem);
     line-height: 1.25;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.45);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -1817,7 +1816,7 @@ h2.titulo span {
     background:
       conic-gradient(from 0deg at 50% 50%, rgba(88,219,0,0.0), rgba(88,219,0,0.25), rgba(0,255,170,0.15), rgba(88,219,0,0.0) 75%);
     mix-blend-mode: screen;
-    opacity: 0.25;
+    opacity: 0.12;
     animation: holoShift 6s linear infinite;
     z-index: 2;
 }
